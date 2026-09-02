@@ -1,14 +1,16 @@
 ---
-import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
 import desktopOverview from "../../assets/product-screenshots/hero/overview-desktop.jpg";
 import mobileBooking from "../../assets/product-screenshots/hero/booking-mobile.jpg";
-import heroCharacter from "../../assets/generated/hero/hero-character.png";
-import heroWater from "../../assets/generated/hero/hero-water-background.png";
-import heroWaterMobile from "../../assets/generated/hero/hero-water-background-mobile.png";
+import productDesktopAr from "../../assets/generated/hero-v2/hero-product-desktop-ar.png";
+import productDesktopEn from "../../assets/generated/hero-v2/hero-product-desktop-en.png";
+import productMobileAr from "../../assets/generated/hero-v2/hero-product-mobile-ar-v2.png";
+import productMobileEn from "../../assets/generated/hero-v2/hero-product-mobile-en.png";
+import waterDesktopAr from "../../assets/generated/hero-v2/hero-water-desktop-ar.png";
+import waterDesktopEn from "../../assets/generated/hero-v2/hero-water-desktop-en.png";
+import waterMobile from "../../assets/generated/hero-v2/hero-water-mobile.png";
+import stickerBlank from "../../assets/generated/hero-v2/hero-sticker-blank.png";
 import headlineAccent from "../../assets/generated/hero/headline-accent-marks.png";
-import mainSpark from "../../assets/generated/hero/hero-main-spark.png";
-import speechBubble from "../../assets/generated/hero/speech-bubble-shape.png";
-import speechBubbleSpark from "../../assets/generated/hero/speech-bubble-spark.png";
 
 interface Props {
   locale: "ar" | "en";
@@ -20,81 +22,92 @@ const isArabic = locale === "ar";
 const copy = isArabic
   ? {
       eyebrow: "نظام إدارة متكامل لمغاسل السيارات",
-      headline: ["مش لازم تفضل", "في المغسلة عشان", "تكون مسيطر عليها."],
+      headline: ["مش لازم تفضل في", "المغسلة عشان تكون", "مسيطر عليها."],
       descriptionLead:
         "Sparkle Auto بيجمع تشغيل مغسلتك في مكان واحد: الحجوزات، حالة العربيات، الفريق، المخزون، الإيرادات والعملاء.",
-      descriptionPivot: "بدل المكالمات والتقارير المتفرقة:",
-      descriptionClose: "افتح واعرف إيه اللي بيحصل في مغسلتك حتى لو إنت بعيد.",
+      descriptionClose:
+        "بدل المكالمات والتقارير المتفرقة: افتح واعرف إيه اللي بيحصل في مغسلتك حتى لو إنت بعيد.",
       primaryCta: "احجز مراجعة تشغيل لفروعك",
       secondaryCta: "شوف السيستم وهو شغال",
+      microcopy:
+        "مراجعة قصيرة نفهم فيها طريقة شغلك ونقولك بصراحة هل Sparkle Auto مناسب ليك ولا لأ.",
       productCaption: "مغسلتك في جيبك.",
+      productFigureLabel:
+        "Sparkle Auto على اللابتوب والموبايل مع شاشة الـOverview وشاشة الحجز الحقيقيتين",
       desktopAlt:
         "شاشة الـOverview الحقيقية في Sparkle Auto وتعرض الحجوزات والإيرادات وحالة تشغيل المغسلة",
-      mobileAlt: "شاشة الحجز الحقيقية للعملاء في Sparkle Auto وتعرض اختيار التاريخ والموعد",
+      mobileAlt:
+        "شاشة الحجز الحقيقية للعملاء في Sparkle Auto وتعرض اختيار التاريخ والموعد",
+      arrow: "←",
     }
   : {
       eyebrow: "Complete Management System for Car Washes",
       headline: ["You don’t have to", "stay at the wash to", "stay in control."],
       descriptionLead:
         "Sparkle Auto brings your bookings, car status, team, inventory, revenue, and customers into one place.",
-      descriptionPivot: "Instead of scattered calls and reports:",
       descriptionClose:
-        "Open the system and know what's happening at your car wash — even when you're away.",
+        "Instead of scattered calls and reports: open the system and know what’s happening at your car wash — even when you’re away.",
       primaryCta: "Book an Operations Review",
       secondaryCta: "See the System in Action",
+      microcopy:
+        "A short review to understand how you operate and tell you honestly whether Sparkle Auto is the right fit for you.",
       productCaption: "Your car wash in your pocket.",
+      productFigureLabel:
+        "Sparkle Auto on laptop and phone with the real Overview and customer booking screens",
       desktopAlt:
         "The real Sparkle Auto Overview screen showing bookings, revenue, and car-wash operations",
       mobileAlt:
         "The real Sparkle Auto customer booking screen showing date and appointment selection",
+      arrow: "→",
     };
 
 const localeRoot = isArabic ? "/" : "/en/";
+const desktopArtSource = isArabic ? productDesktopAr : productDesktopEn;
+const mobileArtSource = isArabic ? productMobileAr : productMobileEn;
+const desktopWaterSource = isArabic ? waterDesktopAr : waterDesktopEn;
+
+const [desktopArt, mobileArt, desktopWater, mobileWaterArt, sticker, accent] = await Promise.all([
+  getImage({ src: desktopArtSource, width: 1448, format: "webp", quality: 91 }),
+  getImage({ src: mobileArtSource, width: 1254, format: "webp", quality: 91 }),
+  getImage({ src: desktopWaterSource, width: 1672, format: "webp", quality: 90 }),
+  getImage({ src: waterMobile, width: 941, format: "webp", quality: 90 }),
+  getImage({ src: stickerBlank, width: 720, format: "webp", quality: 94 }),
+  getImage({ src: headlineAccent, width: 160, format: "webp", quality: 100 }),
+]);
 ---
 
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero__water-stage" aria-hidden="true">
-    <div class="hero__water-piece hero__water-piece--main">
-      <img src={heroWater.src} alt="" width={heroWater.width} height={heroWater.height} loading="eager" fetchpriority="high" decoding="async" />
-    </div>
-    <div class="hero__water-piece hero__water-piece--left">
-      <img src={heroWater.src} alt="" width={heroWater.width} height={heroWater.height} loading="lazy" decoding="async" />
-    </div>
-    <div class="hero__water-piece hero__water-piece--right">
-      <img src={heroWater.src} alt="" width={heroWater.width} height={heroWater.height} loading="lazy" decoding="async" />
-    </div>
-    <div class="hero__water-piece hero__water-piece--halftone">
-      <img src={heroWater.src} alt="" width={heroWater.width} height={heroWater.height} loading="lazy" decoding="async" />
-    </div>
-  </div>
-
-  <picture class="hero__water-mobile" aria-hidden="true">
+<section class="hero" data-locale={locale} aria-labelledby="hero-title">
+  <picture class="hero__water" aria-hidden="true">
+    <source media="(max-width: 67.5rem)" srcset={mobileWaterArt.src} />
     <img
-      src={heroWaterMobile.src}
+      src={desktopWater.src}
       alt=""
-      width={heroWaterMobile.width}
-      height={heroWaterMobile.height}
-      loading="lazy"
+      width={desktopWater.attributes.width}
+      height={desktopWater.attributes.height}
+      loading="eager"
+      fetchpriority="low"
       decoding="async"
     />
   </picture>
 
-  <div class="hero__canvas">
+  <div class="hero__inner">
     <div class="hero__content" dir={isArabic ? "rtl" : "ltr"}>
       <p class="hero__eyebrow">{copy.eyebrow}</p>
 
       <div class="hero__headline-wrap">
         <h1 class="hero__headline" id="hero-title">
-          <span>{copy.headline[0]}</span>
-          <span>{copy.headline[1]}</span>
-          <span class="hero__headline-highlight">{copy.headline[2]}</span>
+          {copy.headline.map((line, index) => (
+            <span class:list={{ "hero__headline-highlight": index === copy.headline.length - 1 }}>
+              {line}{index < copy.headline.length - 1 ? " " : ""}
+            </span>
+          ))}
         </h1>
-        <Image
+        <img
           class="hero__headline-accent"
-          src={headlineAccent}
+          src={accent.src}
           alt=""
-          format="webp"
-          quality={100}
+          width="44"
+          height="50"
           loading="eager"
           decoding="async"
           aria-hidden="true"
@@ -103,122 +116,83 @@ const localeRoot = isArabic ? "/" : "/en/";
 
       <div class="hero__description">
         <p>{copy.descriptionLead}</p>
-        <p><strong>{copy.descriptionPivot}</strong></p>
         <p>{copy.descriptionClose}</p>
       </div>
 
       <div class="hero__actions">
-        <a class="hero__button hero__button--primary" href={`${localeRoot}#application`} dir={isArabic ? "rtl" : "ltr"}>
+        <a class="hero__button hero__button--primary" href={`${localeRoot}#application`}>
           {copy.primaryCta}
         </a>
-        <a class="hero__button hero__button--secondary" href="#hero-product" dir={isArabic ? "rtl" : "ltr"}>
+        <a class="hero__button hero__button--secondary" href="#hero-product">
           <span>{copy.secondaryCta}</span>
-          <span class="hero__button-arrow" aria-hidden="true">→</span>
+          <span class="hero__button-arrow" aria-hidden="true">{copy.arrow}</span>
         </a>
       </div>
 
-      <div class="hero__trust" role="group" aria-labelledby={`hero-trust-title-${locale}`} dir="ltr">
-        <svg class="hero__trust-shield" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-          <circle cx="24" cy="24" r="24" fill="#01A2FF"></circle>
-          <path d="M24 9.5 35 14v9.2c0 7.2-4.4 12.4-11 15.3-6.6-2.9-11-8.1-11-15.3V14Z" fill="#fff"></path>
-          <path d="m18.5 23.8 3.6 3.7 7.7-8" fill="none" stroke="#01A2FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-        <p class="hero__trust-title" id={`hero-trust-title-${locale}`}>Built for car wash owners in Egypt</p>
-        <ul class="hero__trust-list">
-          {[
-            "Easy to use",
-            "Works on any device",
-            "Local support",
-          ].map((item) => (
-            <li>
-              <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-                <circle cx="8" cy="8" r="6.5" fill="none" stroke="#01A2FF"></circle>
-                <path d="m5 8 2 2 4-4" fill="none" stroke="#01A2FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <aside class="hero__microcopy" aria-label={isArabic ? "معلومات مراجعة التشغيل" : "Operations review note"}>
+        <span class="hero__microcopy-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <circle cx="24" cy="24" r="24" fill="currentColor"></circle>
+            <path d="M24 9.5 35 14v9.2c0 7.2-4.4 12.4-11 15.3-6.6-2.9-11-8.1-11-15.3V14Z" fill="#fff"></path>
+            <path d="m18.5 23.8 3.6 3.7 7.7-8" fill="none" stroke="#0796F6" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <p>
+          {isArabic ? (
+            <>
+              مراجعة قصيرة نفهم فيها طريقة شغلك ونقولك بصراحة هل{" "}
+              <bdi dir="ltr">Sparkle Auto</bdi>{" "}
+              مناسب ليك ولا لأ.
+            </>
+          ) : (
+            copy.microcopy
+          )}
+        </p>
+      </aside>
     </div>
 
-    <figure class="hero__visual" id="hero-product" aria-label={copy.productCaption}>
-      <Image
-        class="hero__main-spark"
-        src={mainSpark}
-        alt=""
-        format="webp"
-        quality={100}
-        loading="lazy"
-        decoding="async"
-        aria-hidden="true"
-      />
-
-      <div class="hero__laptop">
-        <div class="hero__laptop-lid">
-          <Image
-            class="hero__desktop-screen"
-            src={desktopOverview}
-            alt={copy.desktopAlt}
-            format="webp"
-            quality={94}
+    <figure class="hero__visual" id="hero-product" aria-label={copy.productFigureLabel}>
+      <div class="hero__product-stage">
+        <picture class="hero__product-art" aria-hidden="true">
+          <source media="(max-width: 67.5rem)" srcset={mobileArt.src} />
+          <img
+            src={desktopArt.src}
+            alt=""
+            width={desktopArt.attributes.width}
+            height={desktopArt.attributes.height}
             loading="eager"
+            fetchpriority="high"
             decoding="async"
           />
-        </div>
-        <div class="hero__laptop-base" aria-hidden="true">
-          <span></span>
-        </div>
-      </div>
+        </picture>
 
-      <Image
-        class="hero__character"
-        src={heroCharacter}
-        alt=""
-        format="webp"
-        quality={94}
-        loading="lazy"
-        decoding="async"
-        aria-hidden="true"
-      />
-
-      <div class="hero__phone">
-        <span class="hero__phone-speaker" aria-hidden="true"></span>
-        <Image
-          class="hero__mobile-screen"
-          src={mobileBooking}
-          alt={copy.mobileAlt}
-          format="webp"
-          quality={94}
+        <img
+          class="hero__screen hero__screen--laptop"
+          src={desktopOverview.src}
+          alt={copy.desktopAlt}
+          width={desktopOverview.width}
+          height={desktopOverview.height}
           loading="eager"
           decoding="async"
         />
-      </div>
 
-      <div class="hero__speech" role="img" aria-label="Run it Smarter.">
-        <Image
-          class="hero__speech-shape"
-          src={speechBubble}
-          alt=""
-          format="webp"
-          quality={100}
-          loading="lazy"
+        <img
+          class="hero__screen hero__screen--phone"
+          src={mobileBooking.src}
+          alt={copy.mobileAlt}
+          width={mobileBooking.width}
+          height={mobileBooking.height}
+          loading="eager"
           decoding="async"
-          aria-hidden="true"
         />
-        <span class="hero__speech-copy" aria-hidden="true">Run it<br />Smarter.</span>
-      </div>
 
-      <Image
-        class="hero__speech-spark"
-        src={speechBubbleSpark}
-        alt=""
-        format="webp"
-        quality={100}
-        loading="lazy"
-        decoding="async"
-        aria-hidden="true"
-      />
+        <div class="hero__sticker" role="note" aria-label={copy.productCaption}>
+          <span class="hero__sticker-crop" aria-hidden="true">
+            <img src={sticker.src} alt="" width="242" height="162" loading="eager" decoding="async" />
+          </span>
+          <span class="hero__sticker-copy">{copy.productCaption}</span>
+        </div>
+      </div>
     </figure>
   </div>
 </section>
@@ -226,202 +200,139 @@ const localeRoot = isArabic ? "/" : "/en/";
 <style>
   .hero {
     position: relative;
-    height: 100svh;
-    min-height: 0;
-    margin-block-start: -7rem;
+    height: calc(100svh - 7rem);
+    min-height: 43rem;
     overflow: hidden;
     background: #fcfeff;
     isolation: isolate;
   }
 
-  .hero__water-stage,
-  .hero__water-mobile {
+  .hero__water {
     position: absolute;
     z-index: 0;
-    inset: 0;
+    inset-inline: 0;
+    inset-block-start: -7rem;
+    display: block;
     width: 100%;
-    height: 100%;
     pointer-events: none;
     user-select: none;
   }
 
-  .hero__water-mobile {
-    display: none;
-  }
-
-  .hero__water-piece {
-    position: absolute;
-    overflow: hidden;
-  }
-
-  .hero__water-piece img {
-    position: absolute;
+  .hero__water img {
     display: block;
-    width: 1536px;
-    max-width: none;
-    height: 864px;
-  }
-
-  .hero__water-piece--main {
-    top: 150px;
-    left: calc(50% - 178px);
-    width: 635px;
-    height: 430px;
+    width: 100%;
+    height: auto;
     opacity: 0.78;
   }
 
-  .hero__water-piece--main img {
-    top: -167px;
-    left: -595px;
-  }
-
-  .hero__water-piece--left {
-    top: 730px;
-    left: 0;
-    width: 175px;
-    height: 134px;
-    opacity: 0.64;
-  }
-
-  .hero__water-piece--left img {
-    top: -700px;
-    left: 0;
-  }
-
-  .hero__water-piece--right {
-    top: 740px;
-    left: calc(50% + 607px);
-    width: 161px;
-    height: 124px;
-    opacity: 0.64;
-  }
-
-  .hero__water-piece--right img {
-    top: -721px;
-    left: -1383px;
-  }
-
-  .hero__water-piece--halftone {
-    top: 190px;
-    left: calc(50% + 612px);
-    width: 156px;
-    height: 335px;
-    opacity: 0.48;
-  }
-
-  .hero__water-piece--halftone img {
-    top: -190px;
-    left: -1380px;
-  }
-
-  .hero__canvas {
+  .hero__inner {
     position: relative;
     z-index: 1;
-    width: 100%;
-    max-width: 96rem;
+    display: grid;
+    width: min(calc(100% - 8rem), 88rem);
     height: 100%;
-    min-height: 0;
     margin-inline: auto;
+    grid-template-columns: minmax(29rem, 36%) minmax(0, 64%);
+    grid-template-areas: "copy visual";
     direction: ltr;
   }
 
+  .hero[data-locale="ar"] .hero__inner {
+    grid-template-areas: "visual copy";
+    grid-template-columns: minmax(0, 64%) minmax(29rem, 36%);
+  }
+
   .hero__content {
-    position: absolute;
-    z-index: 12;
-    top: 150px;
-    left: 64px;
-    display: flex;
-    width: 525px;
-    flex-direction: column;
-    align-items: flex-start;
-    color: var(--deep-navy);
-    text-align: start;
+    z-index: 5;
+    grid-area: copy;
+    width: min(100%, 32.8125rem);
+    padding-block-start: 2.375rem;
+  }
+
+  .hero[data-locale="ar"] .hero__content {
+    justify-self: end;
   }
 
   .hero__eyebrow {
     display: inline-flex;
-    width: 440px;
-    height: 41px;
-    box-sizing: border-box;
+    min-height: 2.5625rem;
     align-items: center;
     margin: 0;
-    padding: 0 13px;
-    border: 2px solid var(--spark-blue);
-    border-radius: 6px;
-    background: var(--white);
-    box-shadow: 4px 4px 0 var(--deep-navy);
+    padding: 0.4rem 0.9rem;
+    border: 2px solid #0796f6;
+    border-radius: 0.375rem;
+    background: #fff;
+    box-shadow: 4px 4px 0 #03132e;
     color: #0064ad;
-    font-size: 18px;
+    font-size: clamp(0.875rem, 0.68rem + 0.35vw, 1.125rem);
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.15;
     white-space: nowrap;
+  }
+
+  .hero[data-locale="en"] .hero__eyebrow {
+    width: 27.5rem;
+    justify-content: center;
   }
 
   .hero__headline-wrap {
     position: relative;
     width: 100%;
+    margin-block-start: 1.25rem;
   }
 
   .hero__headline {
-    margin: 20px 0 0;
-    color: var(--deep-navy);
-    font-size: 63px;
+    width: 32.8125rem;
+    max-width: none;
+    margin: 0;
+    color: #03132e;
+    font-size: clamp(3.4375rem, 4.1vw, 3.9375rem);
     font-weight: 900;
     letter-spacing: -0.035em;
     line-height: 0.95;
+    text-wrap: balance;
   }
 
-  .hero__headline span {
+  .hero[data-locale="ar"] .hero__headline {
+    font-size: clamp(3.25rem, 3.9vw, 3.75rem);
+    letter-spacing: 0;
+    line-height: 1.02;
+  }
+
+  .hero__headline > span {
     display: block;
     white-space: nowrap;
   }
 
-  html[lang="en"] .hero__headline span:nth-child(1) {
-    transform: scaleX(0.99);
-    transform-origin: left center;
-  }
-
-  html[lang="en"] .hero__headline span:nth-child(2) {
-    transform: scaleX(0.925);
-    transform-origin: left center;
-  }
-
-  html[lang="ar"] .hero__headline {
-    letter-spacing: 0;
-    text-align: right;
-  }
-
-  html[lang="ar"] .hero__headline span:nth-child(2) {
-    transform: scaleX(0.965);
-    transform-origin: right center;
-  }
-
-  html[lang="ar"] .hero__headline span:nth-child(3) {
-    transform: scaleX(0.87);
-    transform-origin: right center;
-  }
-
   .hero__headline-highlight {
-    color: var(--spark-blue);
-    letter-spacing: -0.01em;
+    color: #0796f6;
   }
 
   .hero__headline-accent {
     position: absolute;
-    z-index: 13;
-    top: 19px;
-    left: 502px;
-    width: 44px;
-    height: 50px;
-    object-fit: fill;
+    z-index: 2;
+    inset-block-start: -0.1rem;
+    left: calc(100% - 0.35rem);
+    display: block;
+    width: 2.75rem;
+    height: 3.125rem;
+    object-fit: contain;
     pointer-events: none;
   }
 
+  .hero[data-locale="ar"] .hero__headline-accent {
+    inset-block-start: 0.15rem;
+    right: auto;
+    left: 1.25rem;
+    width: 2.4rem;
+    height: 2.75rem;
+  }
+
   .hero__description {
-    width: 500px;
-    margin-block-start: 20px;
+    width: min(100%, 31.25rem);
+    margin-block-start: 1.25rem;
     color: #0c264b;
-    font-size: 18px;
+    font-size: clamp(1rem, 0.82rem + 0.34vw, 1.1875rem);
     font-weight: 500;
     line-height: 1.3;
   }
@@ -431,43 +342,32 @@ const localeRoot = isArabic ? "/" : "/en/";
   }
 
   .hero__description p + p {
-    margin-block-start: 0;
-  }
-
-  .hero__description strong {
-    color: inherit;
-    font-weight: 500;
+    margin-block-start: 0.05rem;
   }
 
   .hero__actions {
-    position: absolute;
-    top: 413px;
-    left: 0;
     display: flex;
-    width: 499px;
-    height: 56px;
+    width: 31.1875rem;
+    max-width: 100%;
     align-items: stretch;
-    gap: 27px;
-    margin: 0;
-    direction: ltr;
+    gap: 1.6875rem;
+    margin-block-start: 2.25rem;
   }
 
   .hero__button {
     display: inline-flex;
-    height: 56px;
-    min-height: 56px;
-    flex: none;
-    box-sizing: border-box;
+    min-height: 3.5rem;
+    flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-    padding: 0 14px;
-    border: 2px solid var(--deep-navy);
-    border-radius: 6px;
-    color: var(--deep-navy);
-    font-size: 16px;
+    gap: 0.65rem;
+    padding-inline: 0.85rem;
+    border: 2px solid #03132e;
+    border-radius: 0.375rem;
+    box-shadow: 5px 5px 0 #03132e;
+    font-size: 1rem;
     font-weight: 850;
-    line-height: 1.2;
+    line-height: 1.15;
     text-align: center;
     text-decoration: none;
     white-space: nowrap;
@@ -478,272 +378,228 @@ const localeRoot = isArabic ? "/" : "/en/";
   }
 
   .hero__button--primary {
-    width: 240px;
-    background: var(--spark-blue);
-    box-shadow: 5px 5px 0 var(--deep-navy);
-    color: var(--deep-navy);
+    width: 15rem;
+    background: #0796f6;
+    color: #fff;
   }
 
   .hero__button--secondary {
-    width: 232px;
-    background: var(--white);
-    box-shadow: 5px 5px 0 var(--deep-navy);
+    width: 14.5rem;
+    background: #fff;
+    color: #03132e;
   }
 
   .hero__button:hover {
-    background: var(--fresh-blue);
     transform: translate(-1px, -1px);
   }
 
+  .hero__button--primary:hover {
+    background: #007ed5;
+  }
+
   .hero__button:active {
-    box-shadow: none;
-    transform: translate(4px, 4px);
+    box-shadow: 1px 1px 0 #03132e;
+    transform: translate(4px, 4px) scale(0.995);
   }
 
   .hero__button:focus-visible {
-    outline: 3px solid var(--deep-navy);
+    outline: 3px solid #0796f6;
     outline-offset: 4px;
+  }
+
+  .hero__button--primary:focus-visible {
+    outline-color: #03132e;
   }
 
   .hero__button-arrow {
     font-family: "Nunito Variable", Nunito, system-ui, sans-serif;
-    font-size: 1.5em;
-    line-height: 0;
+    font-size: 1.45rem;
+    font-weight: 900;
+    line-height: 1;
   }
 
-  .hero__trust {
-    position: absolute;
-    z-index: 13;
-    top: 494px;
-    left: 0;
+  .hero__microcopy {
     display: grid;
-    width: 498px;
-    height: 93px;
-    box-sizing: border-box;
-    grid-template-columns: 52px minmax(0, 1fr);
-    grid-template-rows: auto auto;
-    column-gap: 13px;
-    padding: 12px 14px 11px 12px;
+    width: 31.125rem;
+    min-height: 5.8125rem;
+    max-width: 100%;
+    grid-template-columns: 3.25rem minmax(0, 1fr);
+    align-items: center;
+    gap: 0.9rem;
+    margin-block-start: 1.4375rem;
+    padding: 0.75rem 1rem;
     border: 2px solid #03132e;
-    border-radius: 7px;
+    border-radius: 0.4375rem;
     background: #fff;
     box-shadow: 5px 5px 0 #03132e;
-    color: #03132e;
-    font-family: "Nunito Variable", Nunito, system-ui, sans-serif;
-    text-align: left;
-  }
-
-  .hero__trust-shield {
-    grid-row: 1 / 3;
-    width: 52px;
-    height: 52px;
-    align-self: start;
-    margin-block-start: 1px;
-  }
-
-  .hero__trust-title {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 900;
-    line-height: 1.15;
-    white-space: nowrap;
-  }
-
-  .hero__trust-list {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin: 8px 0 0;
-    padding: 0;
     color: #0c264b;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.2;
-    list-style: none;
-    white-space: nowrap;
   }
 
-  .hero__trust-list li {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
+  .hero[data-locale="ar"] .hero__microcopy {
+    grid-template-columns: minmax(0, 1fr) 3.25rem;
   }
 
-  .hero__trust-list svg {
-    width: 16px;
-    height: 16px;
-    flex: none;
+  .hero__microcopy-icon {
+    display: block;
+    width: 3.25rem;
+    height: 3.25rem;
+    color: #0796f6;
+  }
+
+  .hero[data-locale="ar"] .hero__microcopy-icon {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .hero[data-locale="ar"] .hero__microcopy p {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .hero__microcopy svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero__microcopy p {
+    margin: 0;
+    font-size: 0.94rem;
+    font-weight: 750;
+    line-height: 1.35;
   }
 
   .hero__visual {
-    position: absolute;
+    position: relative;
     z-index: 2;
-    inset: 0;
+    grid-area: visual;
+    min-width: 0;
+    height: 100%;
     margin: 0;
-    direction: ltr;
-    pointer-events: none;
   }
 
-  .hero__main-spark {
+  .hero__product-stage {
+    --laptop-x: 8.63%;
+    --laptop-y: 31.31%;
+    --laptop-w: 58.56%;
+    --laptop-h: 43.92%;
+    --phone-x: 61.60%;
+    --phone-y: 49.26%;
+    --phone-w: 14.71%;
+    --phone-h: 34.90%;
     position: absolute;
-    z-index: 4;
-    top: 133px;
-    left: 1118px;
-    width: 34px;
-    height: 50px;
-    object-fit: fill;
+    inset-block-start: -1.125rem;
+    left: -1.5rem;
+    width: calc(100% + 5.5rem);
+    max-width: 61.875rem;
+    aspect-ratio: 4 / 3;
+    filter: drop-shadow(0 0.7rem 0.65rem rgb(3 19 46 / 8%));
+    animation: hero-product-in 580ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
 
-  .hero__laptop {
-    position: absolute;
-    z-index: 5;
-    top: 296px;
-    left: 583px;
-    width: 680px;
-    animation: hero-stage-in 620ms var(--ease-standard) both;
+  .hero[data-locale="ar"] .hero__product-stage {
+    --laptop-x: 36.88%;
+    --laptop-y: 33.15%;
+    --laptop-w: 55.39%;
+    --laptop-h: 41.53%;
+    --phone-x: 22.51%;
+    --phone-y: 47.88%;
+    --phone-w: 13.81%;
+    --phone-h: 32.78%;
+    left: -4rem;
+    width: calc(100% + 4rem);
+    max-width: 60.3125rem;
   }
 
-  .hero__laptop-lid {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    aspect-ratio: 1.74;
-    padding: 8px;
-    border: 1px solid #111827;
-    border-radius: 10px 10px 3px 3px;
-    background: #101827;
-  }
-
-  .hero__desktop-screen {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 4px;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .hero__laptop-base {
-    position: relative;
-    width: 100%;
-    height: 42px;
-    border: 1px solid #a5afb9;
-    border-block-start-color: #f8fafc;
-    border-radius: 2px 2px 14px 14px;
-    background: #d9e0e6;
-    box-shadow: 0 8px 12px rgb(3 19 46 / 12%);
-    clip-path: polygon(0 0, 100% 0, 98.7% 100%, 1.3% 100%);
-  }
-
-  .hero__laptop-base span {
-    position: absolute;
-    inset-block-start: 0;
-    inset-inline-start: 43%;
-    width: 14%;
-    height: 9px;
-    border: 1px solid #a5afb9;
-    border-block-start: 0;
-    border-radius: 0 0 6px 6px;
-    background: #eef2f5;
-  }
-
-  .hero__character {
-    position: absolute;
-    z-index: 6;
-    top: 86px;
-    left: 1092px;
-    width: 360px;
-    height: auto;
-    object-fit: contain;
-    animation: hero-stage-in 620ms 90ms var(--ease-standard) both;
-  }
-
-  .hero__phone {
-    position: absolute;
-    z-index: 8;
-    top: 422px;
-    left: 1158px;
-    overflow: hidden;
-    width: 149px;
-    height: 352px;
-    padding: 5px;
-    border: 3px solid #071a3f;
-    border-radius: 25px;
-    background: #071a3f;
-    box-shadow: 3px 4px 0 rgb(3 19 46 / 85%);
-    animation: hero-stage-in 620ms 140ms var(--ease-standard) both;
-  }
-
-  .hero__phone-speaker {
-    position: absolute;
-    z-index: 2;
-    inset-block-start: 0.55rem;
-    inset-inline-start: 50%;
-    width: 34%;
-    height: 0.5rem;
-    border-radius: 999px;
-    background: #071a3f;
-    transform: translateX(-50%);
-  }
-
-  .hero__mobile-screen {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 1.15rem;
-    object-fit: cover;
-    object-position: center top;
-  }
-
-  .hero__speech {
-    position: absolute;
-    z-index: 9;
-    top: 113px;
-    left: 1365px;
-    width: 132px;
-    height: 82px;
-    animation: hero-sticker-in 420ms 260ms var(--ease-standard) both;
-  }
-
-  .hero__speech-shape {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-  }
-
-  .hero__speech-copy {
+  .hero__product-art,
+  .hero__product-art img {
     position: absolute;
     z-index: 1;
-    inset-block-start: 21%;
-    inset-inline: 12% 8%;
-    color: #03132e;
-    direction: ltr;
-    font-family: "Nunito Variable", Nunito, system-ui, sans-serif;
-    font-size: clamp(0.7rem, 1.3vw, 1.25rem);
-    font-weight: 950;
-    letter-spacing: -0.045em;
-    line-height: 0.9;
-    text-align: center;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
-  .hero__speech-spark {
+  .hero__product-art img {
+    object-fit: contain;
+  }
+
+  .hero__screen {
     position: absolute;
-    z-index: 11;
-    top: 108px;
-    left: 1468px;
-    width: 28px;
-    height: 37px;
-    object-fit: fill;
-    animation: hero-sticker-in 420ms 330ms var(--ease-standard) both;
+    z-index: 2;
+    display: block;
+    background: #fff;
+    object-fit: contain;
   }
 
-  @keyframes hero-stage-in {
+  .hero__screen--laptop {
+    top: var(--laptop-y);
+    left: var(--laptop-x);
+    width: var(--laptop-w);
+    height: var(--laptop-h);
+  }
+
+  .hero__screen--phone {
+    top: var(--phone-y);
+    left: var(--phone-x);
+    width: var(--phone-w);
+    height: var(--phone-h);
+    border-radius: 5.5% / 3.2%;
+  }
+
+  .hero__sticker {
+    position: absolute;
+    z-index: 4;
+    inset-block-start: 2.2rem;
+    inset-inline-end: 0.6rem;
+    width: 9.375rem;
+    height: 6rem;
+    animation: hero-sticker-in 460ms 180ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .hero[data-locale="ar"] .hero__sticker {
+    inset-inline-start: 21rem;
+    inset-inline-end: auto;
+  }
+
+  .hero__sticker-crop {
+    position: absolute;
+    inset: 0;
+    display: block;
+    overflow: hidden;
+  }
+
+  .hero__sticker-crop img {
+    position: absolute;
+    top: -2rem;
+    left: -2.8125rem;
+    display: block;
+    width: 15.125rem;
+    max-width: none;
+    height: 10.125rem;
+  }
+
+  .hero__sticker-copy {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 0.8rem 0.75rem 1.25rem;
+    color: #03132e;
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 1.08;
+    text-align: center;
+    text-wrap: balance;
+    transform: rotate(-1deg);
+  }
+
+  @keyframes hero-product-in {
     from {
       opacity: 0;
-      transform: translateY(1rem) scale(0.985);
+      transform: translateY(0.75rem) scale(0.99);
     }
     to {
       opacity: 1;
@@ -754,7 +610,7 @@ const localeRoot = isArabic ? "/" : "/en/";
   @keyframes hero-sticker-in {
     from {
       opacity: 0;
-      transform: translateY(0.35rem) rotate(-2deg);
+      transform: translateY(0.5rem) rotate(-2deg);
     }
     to {
       opacity: 1;
@@ -762,229 +618,308 @@ const localeRoot = isArabic ? "/" : "/en/";
     }
   }
 
-  @media (min-width: 56.01rem) and (max-width: 75rem) {
-    .hero {
-      min-height: 56.25vw;
+  @media (max-width: 82.5rem) and (min-width: 67.5625rem) {
+    .hero__inner {
+      width: min(calc(100% - 6rem), 88rem);
+      grid-template-columns: minmax(27.5rem, 39%) minmax(0, 61%);
     }
 
-    .hero__canvas {
-      min-height: 56.25vw;
-    }
-
-    .hero__eyebrow {
-      min-height: 2.35rem;
-    }
-
-    .hero__actions {
-      gap: 0.9rem;
-      margin-block-start: 0.85rem;
-    }
-
-    .hero__button {
-      min-height: 3.2rem;
-      padding-inline: 0.55rem;
-    }
-
-    .hero__description {
-      margin-block-start: 0.8rem;
-      line-height: 1.32;
-    }
-  }
-
-  @media (max-width: 75rem) {
-    .hero {
-      height: auto;
-      min-height: auto;
-      margin-block-start: -7rem;
-      padding-block-start: 7rem;
-    }
-
-    .hero__water-stage {
-      display: none;
-    }
-
-    .hero__water-mobile {
-      display: block;
-    }
-
-    .hero__water-mobile img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: fill;
-    }
-
-    .hero__canvas {
-      display: flex;
-      min-height: 0;
-      flex-direction: column;
-      gap: 2rem;
-      padding: 1.5rem 1.25rem 3rem;
+    .hero[data-locale="ar"] .hero__inner {
+      grid-template-columns: minmax(0, 61%) minmax(27.5rem, 39%);
     }
 
     .hero__content {
-      position: relative;
-      inset: auto;
-      width: 100%;
-      max-width: 40rem;
-      margin-inline: auto;
-    }
-
-    .hero__eyebrow {
-      min-height: 2.75rem;
-      max-width: 100%;
-      font-size: 0.88rem;
-      white-space: normal;
+      padding-block-start: 2rem;
     }
 
     .hero__headline {
-      margin-block-start: 1.1rem;
-      font-size: clamp(2.25rem, 10.8vw, 3.25rem);
-      line-height: 1.1;
+      width: 29rem;
+      font-size: clamp(3.15rem, 4.15vw, 3.55rem);
     }
 
-    .hero__headline span,
-    html[lang="ar"] .hero__headline span:nth-child(2),
-    html[lang="ar"] .hero__headline span:nth-child(3) {
-      white-space: normal;
-      transform: none;
-    }
-
-    .hero__headline-accent {
-      inset-block-start: 0.25rem;
-      inset-inline-start: auto;
-      inset-inline-end: -0.25rem;
-      width: 2rem;
-      height: 2.25rem;
+    .hero[data-locale="ar"] .hero__headline {
+      font-size: clamp(3rem, 3.9vw, 3.35rem);
     }
 
     .hero__description {
-      width: 100%;
-      margin-block-start: 1.35rem;
       font-size: 1rem;
-      line-height: 1.65;
-    }
-
-    .hero__description p + p {
-      margin-block-start: 0.35rem;
     }
 
     .hero__actions {
-      position: relative;
-      top: auto;
-      left: auto;
-      width: 100%;
-      height: auto;
-      flex-direction: column;
-      gap: 0.9rem;
-      margin-block-start: 1.5rem;
-    }
-
-    .hero__button {
-      width: 100%;
-      min-height: 3.5rem;
-      flex: none;
-      font-size: 0.95rem;
+      width: min(100%, 29rem);
+      gap: 1rem;
     }
 
     .hero__button--primary,
     .hero__button--secondary {
-      width: 100%;
+      width: calc(50% - 0.5rem);
+      font-size: 0.88rem;
     }
 
-    .hero__trust {
-      position: relative;
-      top: auto;
-      left: auto;
-      width: 100%;
+    .hero__microcopy {
+      width: min(100%, 29rem);
+    }
+  }
+
+  @media (max-width: 67.5rem) {
+    .hero {
       height: auto;
-      min-height: 93px;
+      min-height: 0;
+      overflow: clip;
+      padding-block-end: 0;
+    }
+
+    .hero__water {
+      inset-block-start: auto;
+      inset-block-end: 0;
+      inset-inline-start: -17.5%;
+      width: 135%;
+    }
+
+    .hero__water img {
+      width: 100%;
+      opacity: 0.72;
+    }
+
+    .hero__inner,
+    .hero[data-locale="ar"] .hero__inner {
+      display: grid;
+      width: min(calc(100% - 2.5rem), 43.1875rem);
+      height: auto;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas:
+        "copy"
+        "visual";
+    }
+
+    .hero__content,
+    .hero[data-locale="ar"] .hero__content {
+      width: 100%;
+      justify-self: stretch;
+      padding-block-start: clamp(1.9rem, 6vw, 3rem);
+      text-align: center;
+    }
+
+    .hero__eyebrow {
+      width: min(100%, 28rem);
+      max-width: 100%;
+      min-height: 2.75rem;
+      justify-content: center;
+      padding-inline: 0.8rem;
+      font-size: clamp(0.82rem, 2.5vw, 1.05rem);
+      white-space: normal;
+    }
+
+    .hero__headline-wrap {
+      width: min(100%, 37rem);
       margin-block-start: 1.5rem;
+      margin-inline: auto;
     }
 
-    .hero__trust-title {
-      white-space: normal;
+    .hero__headline,
+    .hero[data-locale="ar"] .hero__headline {
+      width: 100%;
+      font-size: clamp(2.55rem, 7.4vw, 3.55rem);
+      letter-spacing: -0.025em;
+      line-height: 1.02;
     }
 
-    .hero__trust-list {
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      white-space: normal;
+    .hero[data-locale="ar"] .hero__headline {
+      letter-spacing: 0;
+      line-height: 1.08;
+    }
+
+    .hero__headline-accent {
+      inset-block-start: -0.25rem;
+      right: -0.4rem;
+      left: auto;
+      width: 2.4rem;
+      height: 2.75rem;
+    }
+
+    .hero[data-locale="ar"] .hero__headline-accent {
+      inset-block-start: 0;
+      right: auto;
+      left: -0.25rem;
+    }
+
+    .hero__description {
+      width: min(100%, 35rem);
+      margin-block-start: 1.4rem;
+      margin-inline: auto;
+      font-size: clamp(1rem, 2.75vw, 1.15rem);
+      line-height: 1.45;
+    }
+
+    .hero__description p + p {
+      margin-block-start: 0.45rem;
+    }
+
+    .hero__actions {
+      width: min(100%, 35rem);
+      flex-direction: column;
+      gap: 1rem;
+      margin-block-start: 1.65rem;
+      margin-inline: auto;
+    }
+
+    .hero__button,
+    .hero__button--primary,
+    .hero__button--secondary {
+      width: 100%;
+      min-height: 3.5rem;
+      font-size: 1rem;
+    }
+
+    .hero__microcopy,
+    .hero[data-locale="ar"] .hero__microcopy {
+      width: min(100%, 35rem);
+      min-height: 5.75rem;
+      margin-block-start: 1.25rem;
+      margin-inline: auto;
+      text-align: start;
     }
 
     .hero__visual {
+      height: auto;
+      margin-block-start: 2.1rem;
+    }
+
+    .hero__product-stage,
+    .hero[data-locale="ar"] .hero__product-stage {
+      --laptop-x: 7.74%;
+      --laptop-y: 39.47%;
+      --laptop-w: 61.88%;
+      --laptop-h: 34.77%;
+      --phone-x: 59.33%;
+      --phone-y: 56.62%;
+      --phone-w: 13.88%;
+      --phone-h: 24.64%;
       position: relative;
       inset: auto;
-      display: flex;
-      width: 100%;
-      min-height: 0;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.6rem;
+      left: auto;
+      width: calc(100% + 2.5rem);
+      max-width: none;
+      margin-inline-start: -1.25rem;
+      aspect-ratio: 1;
     }
 
-    .hero__main-spark,
-    .hero__character,
-    .hero__speech,
-    .hero__speech-spark {
-      display: none;
+    .hero[data-locale="ar"] .hero__product-stage {
+      --laptop-x: 30.46%;
+      --laptop-y: 39.47%;
+      --laptop-w: 63.56%;
+      --laptop-h: 35.73%;
+      --phone-x: 27.27%;
+      --phone-y: 57.42%;
+      --phone-w: 12.60%;
+      --phone-h: 22.41%;
     }
 
-    .hero__laptop {
-      position: relative;
-      inset: auto;
-      width: min(100%, 40rem);
+    .hero__sticker {
+      inset-block-start: 3.5%;
+      inset-inline-end: 1.5%;
+      width: clamp(7.6rem, 26vw, 9.4rem);
+      height: clamp(4.9rem, 16.6vw, 6rem);
     }
 
-    .hero__laptop-lid {
-      padding: 0.35rem;
-      border-width: 3px;
-      border-radius: 0.65rem 0.65rem 0.25rem 0.25rem;
+    .hero[data-locale="ar"] .hero__sticker {
+      inset-inline-start: 38%;
+      inset-inline-end: auto;
     }
 
-    .hero__laptop-base {
-      border-width: 2px;
-    }
-
-    .hero__phone {
-      position: relative;
-      inset: auto;
-      width: min(10.5rem, 46vw);
-      padding: 0.3rem;
-      border-width: 3px;
-      border-radius: 1.45rem;
-      box-shadow: var(--shadow-1);
-    }
-
-  }
-
-  @media (max-width: 48rem) {
-    .hero {
-      margin-block-start: -5.5rem;
-      padding-block-start: 5.5rem;
-    }
-
-    .hero__headline-accent {
-      display: none;
+    .hero__sticker-copy {
+      font-size: clamp(0.78rem, 2.5vw, 1rem);
     }
   }
 
-  @media (max-width: 23rem) {
-    .hero__headline {
-      font-size: 2.05rem;
+  @media (max-width: 32rem) {
+    .hero__inner,
+    .hero[data-locale="ar"] .hero__inner {
+      width: min(calc(100% - 2rem), 43.1875rem);
     }
 
-    .hero__headline-accent {
-      display: none;
+    .hero__content,
+    .hero[data-locale="ar"] .hero__content {
+      padding-block-start: 1.6rem;
+    }
+
+    .hero__headline,
+    .hero[data-locale="ar"] .hero__headline {
+      font-size: clamp(2.2rem, 10.8vw, 2.85rem);
+    }
+
+    .hero__headline > span {
+      white-space: normal;
+    }
+
+    .hero__description {
+      font-size: 0.98rem;
+    }
+
+    .hero__microcopy,
+    .hero[data-locale="ar"] .hero__microcopy {
+      grid-template-columns: 2.8rem minmax(0, 1fr);
+      padding: 0.75rem;
+    }
+
+    .hero[data-locale="ar"] .hero__microcopy {
+      grid-template-columns: minmax(0, 1fr) 2.8rem;
+    }
+
+    .hero__microcopy-icon {
+      width: 2.8rem;
+      height: 2.8rem;
+    }
+
+    .hero__microcopy p {
+      font-size: 0.84rem;
+    }
+
+    .hero__visual {
+      margin-block-start: 1.6rem;
+    }
+
+    .hero__product-stage,
+    .hero[data-locale="ar"] .hero__product-stage {
+      width: calc(100% + 2rem);
+      margin-inline-start: -1rem;
+    }
+  }
+
+  @media (max-width: 22rem) {
+    .hero__content,
+    .hero[data-locale="ar"] .hero__content {
+      padding-block-start: 1rem;
+    }
+
+    .hero__headline-wrap {
+      margin-block-start: 1rem;
+    }
+
+    .hero__headline,
+    .hero[data-locale="ar"] .hero__headline {
+      font-size: 2rem;
+      line-height: 1.02;
+    }
+
+    .hero__description {
+      margin-block-start: 1rem;
+      font-size: 0.9375rem;
+      line-height: 1.35;
+    }
+
+    .hero__description p + p {
+      margin-block-start: 0.3rem;
+    }
+
+    .hero__actions {
+      margin-block-start: 1.1rem;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero__laptop,
-    .hero__phone,
-    .hero__character,
-    .hero__speech,
-    .hero__speech-spark {
+    .hero__product-stage,
+    .hero__sticker {
       animation: none;
     }
   }

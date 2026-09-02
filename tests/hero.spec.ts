@@ -12,17 +12,23 @@ const expectBoxClose = (actual: Box | null, expected: Partial<Box>, tolerance = 
 };
 
 test.describe("GROUP 03 hero", () => {
-  test("renders the approved Arabic copy, outcomes, and destinations", async ({ page }) => {
+  test("renders the complete approved Arabic copy and no reference-only claims", async ({ page }) => {
     await page.goto("/");
 
     await expect(page.locator(".hero__eyebrow")).toHaveText("نظام إدارة متكامل لمغاسل السيارات");
-    await expect(page.locator("#hero-title")).toContainText("مش لازم تفضل");
-    await expect(page.locator("#hero-title")).toContainText("في المغسلة عشان");
-    await expect(page.locator("#hero-title")).toContainText("تكون مسيطر عليها.");
-    await expect(page.locator(".hero__description")).toContainText(
-      "Sparkle Auto بيجمع تشغيل مغسلتك في مكان واحد",
+    await expect(page.locator("#hero-title")).toContainText("مش لازم تفضل في");
+    await expect(page.locator("#hero-title")).toContainText("المغسلة عشان تكون");
+    await expect(page.locator("#hero-title")).toContainText("مسيطر عليها.");
+    await expect(page.locator(".hero__description p").nth(0)).toHaveText(
+      "Sparkle Auto بيجمع تشغيل مغسلتك في مكان واحد: الحجوزات، حالة العربيات، الفريق، المخزون، الإيرادات والعملاء.",
     );
-    await expect(page.locator(".hero__description")).toContainText("بدل المكالمات والتقارير المتفرقة:");
+    await expect(page.locator(".hero__description p").nth(1)).toHaveText(
+      "بدل المكالمات والتقارير المتفرقة: افتح واعرف إيه اللي بيحصل في مغسلتك حتى لو إنت بعيد.",
+    );
+    await expect(page.locator(".hero__microcopy p")).toHaveText(
+      "مراجعة قصيرة نفهم فيها طريقة شغلك ونقولك بصراحة هل Sparkle Auto مناسب ليك ولا لأ.",
+    );
+    await expect(page.locator(".hero__sticker-copy")).toHaveText("مغسلتك في جيبك.");
 
     await expect(page.getByRole("link", { name: "احجز مراجعة تشغيل لفروعك" })).toHaveAttribute(
       "href",
@@ -32,16 +38,20 @@ test.describe("GROUP 03 hero", () => {
       "href",
       "#hero-product",
     );
-    await expect(page.locator(".hero__trust-title")).toHaveText("Built for car wash owners in Egypt");
-    await expect(page.locator(".hero__trust-list li")).toHaveCount(3);
-    await expect(page.locator(".hero__product-caption")).toHaveCount(0);
+
+    const heroText = await page.locator(".hero").innerText();
+    expect(heroText).not.toContain("Built for car wash owners in Egypt");
+    expect(heroText).not.toContain("Easy to use");
+    expect(heroText).not.toContain("Works on any device");
+    expect(heroText).not.toContain("Local support");
+    expect(heroText).not.toContain("Run it Smarter");
   });
 
-  test("uses the supplied real Overview and booking screenshots", async ({ page }) => {
+  test("uses the supplied real Overview and booking screenshots without stretching", async ({ page }) => {
     await page.goto("/");
 
-    const desktop = page.locator(".hero__desktop-screen");
-    const phone = page.locator(".hero__mobile-screen");
+    const desktop = page.locator(".hero__screen--laptop");
+    const phone = page.locator(".hero__screen--phone");
 
     await expect
       .poll(() =>
@@ -62,9 +72,30 @@ test.describe("GROUP 03 hero", () => {
 
     await expect(desktop).toHaveAttribute("alt", /Overview/);
     await expect(phone).toHaveAttribute("alt", /شاشة الحجز الحقيقية/);
+    await expect(desktop).toHaveCSS("object-fit", "contain");
+    await expect(phone).toHaveCSS("object-fit", "contain");
   });
 
-  test("preserves the reference composition on desktop", async ({ page }, testInfo) => {
+  test("selects independent English and Arabic desktop artwork without mirroring", async ({ page }, testInfo) => {
+    test.skip(!testInfo.project.name.startsWith("desktop"), "Desktop artwork selection only");
+    await page.emulateMedia({ reducedMotion: "reduce" });
+
+    await page.goto("/en/");
+    const englishArt = page.locator(".hero__product-art img");
+    await expect.poll(() => englishArt.evaluate((image: HTMLImageElement) => image.currentSrc)).toContain(
+      "hero-product-desktop-en",
+    );
+    await expect(englishArt).toHaveCSS("transform", "none");
+
+    await page.goto("/");
+    const arabicArt = page.locator(".hero__product-art img");
+    await expect.poll(() => arabicArt.evaluate((image: HTMLImageElement) => image.currentSrc)).toContain(
+      "hero-product-desktop-ar",
+    );
+    await expect(arabicArt).toHaveCSS("transform", "none");
+  });
+
+  test("preserves the English master composition at 1536 by 864", async ({ page }, testInfo) => {
     test.skip(!testInfo.project.name.startsWith("desktop"), "Desktop composition only");
     await page.goto("/en/");
 
@@ -74,37 +105,34 @@ test.describe("GROUP 03 hero", () => {
     const headline = await page.locator(".hero__headline").boundingBox();
     const description = await page.locator(".hero__description").boundingBox();
     const actions = await page.locator(".hero__actions").boundingBox();
-    const trust = await page.locator(".hero__trust").boundingBox();
-    const laptop = await page.locator(".hero__laptop").boundingBox();
-    const phone = await page.locator(".hero__phone").boundingBox();
-    const character = await page.locator(".hero__character").boundingBox();
-    const accent = await page.locator(".hero__headline-accent").boundingBox();
+    const microcopy = await page.locator(".hero__microcopy").boundingBox();
+    const stage = await page.locator(".hero__product-stage").boundingBox();
+    const laptop = await page.locator(".hero__screen--laptop").boundingBox();
+    const phone = await page.locator(".hero__screen--phone").boundingBox();
+    const sticker = await page.locator(".hero__sticker").boundingBox();
 
     const viewport = await page.evaluate(() => ({
       width: innerWidth,
       height: innerHeight,
       dpr: devicePixelRatio,
       scrollHeight: document.scrollingElement?.scrollHeight,
+      scrollWidth: document.scrollingElement?.scrollWidth,
     }));
-    expect(viewport).toEqual({ width: 1536, height: 864, dpr: 1, scrollHeight: 864 });
+    expect(viewport).toEqual({ width: 1536, height: 864, dpr: 1, scrollHeight: 864, scrollWidth: 1536 });
 
     expectBoxClose(header, { x: 0, y: 0, width: 1536, height: 112 }, 2);
-    expectBoxClose(hero, { x: 0, y: 0, width: 1536, height: 864 }, 2);
+    expectBoxClose(hero, { x: 0, y: 112, width: 1536, height: 752 }, 2);
     expectBoxClose(eyebrow, { x: 64, y: 150, width: 440, height: 41 });
     expectBoxClose(headline, { x: 64, y: 211, width: 525 });
-    expectBoxClose(description, { x: 64, y: 411, width: 500 });
-    expect(description!.y + description!.height).toBeLessThanOrEqual(530);
-    expectBoxClose(actions, { x: 64, y: 563, width: 499, height: 56 });
-    expectBoxClose(trust, { x: 64, y: 644, width: 498, height: 93 });
-    expectBoxClose(laptop, { x: 583, y: 296, width: 680 });
-    expect(Math.abs(laptop!.y + laptop!.height - 729)).toBeLessThanOrEqual(2);
-    expectBoxClose(phone, { x: 1158, y: 422, width: 149, height: 352 });
-    expect(character!.y + character!.height).toBeGreaterThanOrEqual(810);
-    expect(character!.y + character!.height).toBeLessThanOrEqual(818);
-    expectBoxClose(accent, { x: 566, y: 210, width: 44, height: 50 });
+    expectBoxClose(description, { x: 64, y: 410, width: 500 });
+    expectBoxClose(actions, { x: 64, y: 567, width: 499, height: 56 });
+    expectBoxClose(microcopy, { x: 64, y: 646, width: 498, height: 93 });
+    expectBoxClose(stage, { x: 547, y: 94, width: 989 });
+    expectBoxClose(laptop, { x: 632, y: 326, width: 579, height: 326 });
+    expectBoxClose(phone, { x: 1156, y: 459, width: 146, height: 259 });
+    expectBoxClose(sticker, { x: 1376, y: 129, width: 150, height: 96 });
+    expect(laptop!.x).toBeGreaterThan(headline!.x + headline!.width);
 
-    await expect(page.locator(".hero__button--primary")).toHaveText("Book an Operations Review");
-    expect(await page.locator(".hero").evaluate((element) => getComputedStyle(element).overflow)).toBe("hidden");
     const headlineStyle = await page.locator(".hero__headline").evaluate((element) => ({
       fontSize: parseFloat(getComputedStyle(element).fontSize),
       lineHeight: parseFloat(getComputedStyle(element).lineHeight),
@@ -112,34 +140,34 @@ test.describe("GROUP 03 hero", () => {
     expect(headlineStyle.fontSize).toBeGreaterThanOrEqual(62);
     expect(headlineStyle.fontSize).toBeLessThanOrEqual(64);
     expect(headlineStyle.lineHeight).toBeGreaterThanOrEqual(58);
-    expect(headlineStyle.lineHeight).toBeLessThanOrEqual(63);
-    await expect(page.locator(".hero__headline > span")).toHaveCount(3);
-    await expect(page.locator(".hero__trust svg").first()).toHaveAttribute("aria-hidden", "true");
+    expect(headlineStyle.lineHeight).toBeLessThanOrEqual(61);
   });
 
-  test("uses the dedicated stacked mobile composition without overflow", async ({ page }, testInfo) => {
+  test("uses the dedicated Arabic mobile asset and content-first sequence without overflow", async ({ page }, testInfo) => {
     test.skip(!testInfo.project.name.startsWith("mobile"), "Mobile composition only");
     await page.goto("/");
 
-    const content = await page.locator(".hero__content").boundingBox();
     const actions = await page.locator(".hero__actions").boundingBox();
-    const laptop = await page.locator(".hero__laptop").boundingBox();
-    const phone = await page.locator(".hero__phone").boundingBox();
-    const trust = await page.locator(".hero__trust").boundingBox();
+    const microcopy = await page.locator(".hero__microcopy").boundingBox();
+    const stage = await page.locator(".hero__product-stage").boundingBox();
+    const laptop = await page.locator(".hero__screen--laptop").boundingBox();
+    const phone = await page.locator(".hero__screen--phone").boundingBox();
 
-    expect(content).not.toBeNull();
     expect(actions).not.toBeNull();
+    expect(microcopy).not.toBeNull();
+    expect(stage).not.toBeNull();
     expect(laptop).not.toBeNull();
     expect(phone).not.toBeNull();
-    expect(trust).not.toBeNull();
-    expect(actions!.y).toBeGreaterThan(content!.y);
-    expect(trust!.y).toBeGreaterThan(actions!.y);
-    expect(laptop!.y).toBeGreaterThan(trust!.y + trust!.height);
-    expect(phone!.y).toBeGreaterThan(laptop!.y + laptop!.height);
-    await expect(page.locator(".hero__character")).toBeHidden();
-    await expect(page.locator(".hero__water-mobile")).toBeVisible();
-    expect(await page.locator(".hero__water-mobile img").evaluate((image: HTMLImageElement) => image.currentSrc)).toContain(
-      "hero-water-background-mobile",
+    expect(microcopy!.y).toBeGreaterThan(actions!.y + actions!.height);
+    expect(stage!.y).toBeGreaterThan(microcopy!.y + microcopy!.height);
+    expect(laptop!.width).toBeGreaterThan(220);
+    expect(phone!.width).toBeGreaterThan(48);
+
+    await expect.poll(() => page.locator(".hero__product-art img").evaluate((image: HTMLImageElement) => image.currentSrc)).toContain(
+      "hero-product-mobile-ar-v2",
+    );
+    await expect.poll(() => page.locator(".hero__water img").evaluate((image: HTMLImageElement) => image.currentSrc)).toContain(
+      "hero-water-mobile",
     );
 
     const dimensions = await page.evaluate(() => ({
@@ -149,17 +177,29 @@ test.describe("GROUP 03 hero", () => {
     expect(dimensions.scrollWidth).toBe(dimensions.clientWidth);
   });
 
-  test("reduced motion preserves all content and removes hero animation", async ({ page }) => {
+  test("keeps primary value and CTA visible in the 390 by 844 first fold", async ({ page }, testInfo) => {
+    test.skip(!testInfo.project.name.startsWith("mobile"), "Mobile fold check only");
+    await page.goto("/");
+
+    const headline = await page.locator("#hero-title").boundingBox();
+    const primary = await page.getByRole("link", { name: "احجز مراجعة تشغيل لفروعك" }).boundingBox();
+    expect(headline).not.toBeNull();
+    expect(primary).not.toBeNull();
+    expect(headline!.y + headline!.height).toBeLessThan(844);
+    expect(primary!.y + primary!.height).toBeLessThan(844);
+  });
+
+  test("has keyboard-visible CTA focus and a reduced-motion final state", async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/en/");
 
-    await expect(page.locator("#hero-title")).toBeVisible();
-    await expect(page.locator(".hero__desktop-screen")).toBeVisible();
-    await expect(page.locator(".hero__mobile-screen")).toBeVisible();
-    expect(await page.locator(".hero__laptop").evaluate((element) => getComputedStyle(element).animationName)).toBe(
+    const primary = page.locator(".hero__button--primary");
+    await primary.focus();
+    expect(await primary.evaluate((element) => getComputedStyle(element).outlineStyle)).not.toBe("none");
+    expect(await page.locator(".hero__product-stage").evaluate((element) => getComputedStyle(element).animationName)).toBe(
       "none",
     );
-    expect(await page.locator(".hero__phone").evaluate((element) => getComputedStyle(element).animationName)).toBe(
+    expect(await page.locator(".hero__sticker").evaluate((element) => getComputedStyle(element).animationName)).toBe(
       "none",
     );
   });
