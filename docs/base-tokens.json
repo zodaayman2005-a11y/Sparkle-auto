@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "name": "Sparkle Auto Landing Base",
+    "version": "1.0.0",
+    "status": "locked",
+    "referenceDirection": "rtl",
+    "primaryLanguage": "ar",
+    "secondaryLanguage": "en"
+  },
+  "color": {
+    "sparkBlue": "#0796F6",
+    "freshBlue": "#45B7FF",
+    "iceBlue": "#DDF3FF",
+    "cloudBlue": "#F6FBFF",
+    "aqua": "#35D5DF",
+    "deepNavy": "#06245F",
+    "inkMuted": "#314B6B",
+    "white": "#FFFFFF",
+    "success": "#138A52",
+    "danger": "#C73535"
+  },
+  "font": {
+    "arabic": "Cairo",
+    "latin": "Nunito"
+  },
+  "fontSize": {
+    "label": "0.875rem",
+    "small": "0.9375rem",
+    "body": "clamp(1rem, 0.96rem + 0.18vw, 1.125rem)",
+    "lead": "clamp(1.1875rem, 1.12rem + 0.28vw, 1.375rem)",
+    "h3": "clamp(1.625rem, 1.38rem + 1.05vw, 2.25rem)",
+    "h2": "clamp(2.125rem, 1.58rem + 2.35vw, 3.5rem)",
+    "h1": "clamp(2.75rem, 1.95rem + 3.4vw, 4.5rem)",
+    "display": "clamp(3rem, 2.1rem + 3.85vw, 5rem)"
+  },
+  "space": {
+    "1": "0.25rem",
+    "2": "0.5rem",
+    "3": "0.75rem",
+    "4": "1rem",
+    "6": "1.5rem",
+    "8": "2rem",
+    "10": "2.5rem",
+    "12": "3rem",
+    "16": "4rem",
+    "sectionMobile": "4.5rem",
+    "sectionTablet": "6.5rem",
+    "sectionDesktop": "9rem"
+  },
+  "radius": {
+    "none": "0",
+    "control": "0.5rem",
+    "button": "0.75rem",
+    "card": "0.75rem",
+    "panel": "1rem",
+    "pill": "999px"
+  },
+  "border": {
+    "compact": "2px",
+    "default": "3px",
+    "statement": "4px"
+  },
+  "shadow": {
+    "level0": "none",
+    "level1": "3px 3px 0 #06245F",
+    "level2": "6px 6px 0 #06245F",
+    "level3": "10px 10px 0 #06245F"
+  },
+  "layout": {
+    "containerMax": "77.5rem",
+    "gutterMobile": "1.25rem",
+    "gutterTablet": "2rem",
+    "gutterDesktop": "3rem",
+    "gridGapMobile": "1rem",
+    "gridGapTablet": "1.25rem",
+    "gridGapDesktop": "1.5rem"
+  },
+  "breakpoint": {
+    "sm": "40rem",
+    "md": "48rem",
+    "lg": "64rem",
+    "xl": "80rem"
+  },
+  "motion": {
+    "micro": "160ms",
+    "standard": "280ms",
+    "large": "440ms",
+    "standardEase": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+    "premiumEase": "cubic-bezier(0.16, 1, 0.3, 1)"
+  },
+  "accessibility": {
+    "target": "WCAG 2.2 AA",
+    "minimumPointerTarget": "44px",
+    "primaryControlHeight": "52px",
+    "normalTextContrast": "4.5:1",
+    "largeTextAndUiContrast": "3:1"
+  },
+  "performance": {
+    "lcp": "<=2.5s",
+    "inp": "<=200ms",
+    "cls": "<=0.1",
+    "initialJavaScriptCompressed": "<=180KB",
+    "animationJavaScriptCompressed": "<=45KB",
+    "aboveFoldImagesTransferred": "<=600KB"
+  }
+}
