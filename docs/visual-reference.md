@@ -6,6 +6,10 @@ The locked landing-page design direction, tokens, composition rules, motion,
 responsive behavior, forbidden patterns, and QA checklist are defined in
 `landing-page-design-system.md`.
 
+The section-level composition references are stored in `docs/reference/` and
+their approved interpretation and known Master Plan overrides are documented in
+`section-reference-notes.md`.
+
 ## Product direction
 
 Sparkle Auto is a clean, friendly car-care booking and business-management
