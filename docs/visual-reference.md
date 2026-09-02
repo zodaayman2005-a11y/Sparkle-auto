@@ -2,6 +2,10 @@
 
 The original reference images are stored in `assets/references/`.
 
+The locked landing-page design direction, tokens, composition rules, motion,
+responsive behavior, forbidden patterns, and QA checklist are defined in
+`landing-page-design-system.md`.
+
 ## Product direction
 
 Sparkle Auto is a clean, friendly car-care booking and business-management
