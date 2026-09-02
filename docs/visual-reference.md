@@ -21,6 +21,32 @@ subtle shadows, and dark navy typography.
   confirmation. The mobile navigation includes Home, Book now, Store, My
   bookings, and My profile.
 
+### Detailed dashboard references
+
+The additional desktop references are stored in `assets/references/dashboard/`:
+
+- `brand-mark.jpg`: the primary brand mark. It combines a cyan-to-blue letter
+  S, a navy car silhouette, water splashes, and flowing wash lines.
+- `finance-dues.jpg`: finance activity home with income, expenses, net, amount
+  due, transaction recording actions, recent transactions, and upcoming dues.
+- `finance-analysis.jpg`: cash and accrual position, money-in and money-out
+  summaries, payment-method analysis, and a financial timeline.
+- `finance-overview.jpg`: date, branch, payment-method, and transaction filters;
+  revenue, expenses, profit, bills, salaries, refunds, and payroll KPIs.
+- `offers.jpg`: promo-code and loyalty management, summary KPIs, filtering,
+  status indicators, usage limits, validity periods, and row actions.
+- `inventory.jpg`: stock KPIs, catalog actions, current stock, movement history,
+  item/SKU search, category filtering, and an empty state.
+- `workforce.jpg`: shifts and attendance, payroll, commissions, cash control,
+  security logs, attendance status, and correction actions.
+- `bookings.jpg`: booking KPIs and status tabs, search and sorting, walk-ins,
+  service timing, customer information, payment state, and completion state.
+
+These screens establish a multi-tenant or multi-branch admin product. The
+header consistently contains branch switching, booking search, utilities,
+notifications, dark mode, and language switching. The interface must support
+both English and Arabic, including mixed-language data.
+
 ## Brand character
 
 `photo-3.jpg` through `photo-10.jpg` show the same friendly 3D male character:
@@ -51,4 +77,10 @@ The available poses cover:
   style consistent across new imagery.
 - Use character poses contextually for onboarding, empty states, guidance,
   errors, promotions, and success feedback.
-
+- Preserve the dense but calm desktop layout: fixed sidebar, compact top bar,
+  KPI cards, segmented tabs, filters, tables or cards, and clear empty states.
+- Use semantic status colors consistently: green for positive/paid/completed,
+  red for expenses/overdue/cancelled, orange for amounts due, and blue for
+  primary actions and active navigation.
+- Treat EGP as the primary displayed currency while keeping money formatting
+  reusable and locale-aware.
