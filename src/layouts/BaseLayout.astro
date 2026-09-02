@@ -1,0 +1,25 @@
+---
+import "@fontsource-variable/cairo";
+import "@fontsource-variable/nunito";
+import "../styles/global.css";
+
+interface Props {
+  locale: "ar" | "en";
+}
+
+const { locale } = Astro.props;
+const direction = locale === "ar" ? "rtl" : "ltr";
+---
+
+<!doctype html>
+<html lang={locale} dir={direction}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#F6FBFF" />
+    <title>Sparkle Auto</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

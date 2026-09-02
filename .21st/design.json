@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "project": {
+    "name": "Sparkle Auto Landing Page",
+    "productType": "Arabic-first bilingual product landing page",
+    "stack": [
+      "Astro",
+      "TypeScript",
+      "CSS",
+      "Playwright"
+    ]
+  },
+  "sources": {
+    "tokens": [
+      "docs/base-tokens.json",
+      "src/styles/global.css"
+    ],
+    "components": [
+      "src/components"
+    ],
+    "assets": [
+      "assets/brand",
+      "assets/generated",
+      "assets/product-screenshots",
+      "assets/references"
+    ],
+    "instructions": [
+      "docs/group-01-base-system.md",
+      "docs/group-02-header.md"
+    ]
+  },
+  "design": {
+    "colorMode": "light",
+    "colors": {
+      "primary": "#0796F6",
+      "fresh": "#45B7FF",
+      "surface": "#F6FBFF",
+      "surfaceAccent": "#DDF3FF",
+      "outline": "#06245F",
+      "text": "#06245F",
+      "mutedText": "#314B6B"
+    },
+    "typography": {
+      "arabic": "Cairo Variable",
+      "latin": "Nunito Variable"
+    },
+    "spacing": {
+      "base": "4px",
+      "containerMax": "1240px",
+      "desktopGutter": "48px"
+    },
+    "radius": {
+      "control": "8px",
+      "button": "12px",
+      "panel": "16px"
+    },
+    "shadows": {
+      "level1": "3px 3px 0 #06245F",
+      "level2": "6px 6px 0 #06245F",
+      "level3": "10px 10px 0 #06245F"
+    },
+    "motion": {
+      "micro": "160ms cubic-bezier(0.2, 0.8, 0.2, 1)",
+      "standard": "280ms cubic-bezier(0.2, 0.8, 0.2, 1)",
+      "reducedMotion": "required"
+    },
+    "density": "comfortable"
+  },
+  "components": {
+    "installed": [
+      "SiteHeader"
+    ],
+    "preferredPrimitives": [
+      "semantic HTML",
+      "logical CSS properties",
+      "native links and buttons"
+    ],
+    "patterns": [
+      "physical CTA press",
+      "hard offset shadow",
+      "direction-aware bilingual navigation",
+      "accessible dropdown navigation"
+    ]
+  },
+  "constraints": {
+    "must": [
+      "Arabic RTL is the reference implementation",
+      "English LTR is secondary",
+      "Use real supplied brand assets",
+      "Use real product screenshots only",
+      "Custom complex artwork uses ChatGPT Image",
+      "Preserve GROUP 01 tokens and gates",
+      "Support keyboard and reduced motion"
+    ],
+    "avoid": [
+      "Glassmorphism",
+      "Generic SaaS gradients",
+      "Fake product UI or metrics",
+      "Code approximations of required artwork",
+      "Premium Scroll outside Strategy, Product, and Setup",
+      "Unapproved copy or navigation links"
+    ]
+  },
+  "decisions": [
+    {
+      "id": "group-01-base",
+      "decision": "Fresh Blue Neo-Brutalism with a 70/30 clean-to-playful balance",
+      "reason": "Approved GROUP 01 base system"
+    },
+    {
+      "id": "static-first-stack",
+      "decision": "Astro static output with small component-scoped client scripts",
+      "reason": "Landing-page SEO, performance, and progressive enhancement"
+    },
+    {
+      "id": "group-02-header",
+      "decision": "One shared bilingual Header component with mirrored RTL/LTR composition and a functional menu at all sizes",
+      "reason": "Matches the supplied reference while preserving the approved Base and accessible mobile behavior"
+    }
+  ],
+  "evidence": [
+    "docs/group-01-base-system.md",
+    "docs/group-01-moodboard.md",
+    "docs/group-02-header.md",
+    "assets/references/group-02-header/header-reference.jpg"
+  ],
+  "generatedAt": "2026-09-02T18:01:36.728Z"
+}

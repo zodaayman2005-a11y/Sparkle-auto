@@ -4,13 +4,14 @@ Arabic-first bilingual landing page for Sparkle Auto, a browser-based booking an
 
 ## Current phase
 
-GROUP 01 — Project Understanding + Base Visual & Interaction System is approved and locked. No final Header, Hero, or page section has been built yet.
+GROUP 01 — Project Understanding + Base Visual & Interaction System is approved and locked. GROUP 02 — Header is approved, locked, and has passed automated QA. GROUP 03 — Hero has not started.
 
 Start with:
 
 - [Group 01 base system](docs/group-01-base-system.md)
 - [Approved Group 01 visual moodboard](docs/group-01-moodboard.md)
 - [Machine-readable base tokens](docs/base-tokens.json)
+- [GROUP 02 Header brief, reference analysis, and QA](docs/group-02-header.md)
 - [Official brand assets](assets/brand/README.md)
 
 ## Asset separation

@@ -1,0 +1,218 @@
+---
+import { Image } from "astro:assets";
+import logo from "../../assets/brand/logo/sparkle-auto-logo.jpg";
+
+interface Props {
+  locale: "ar" | "en";
+}
+
+const { locale } = Astro.props;
+const isArabic = locale === "ar";
+
+const content = isArabic
+  ? {
+      skip: "انتقل إلى المحتوى الرئيسي",
+      home: "Sparkle Auto — الصفحة الرئيسية",
+      navigation: "التنقل الرئيسي",
+      mobileNavigation: "قائمة التنقل",
+      language: "اختيار اللغة",
+      openMenu: "فتح قائمة التنقل",
+      closeMenu: "إغلاق قائمة التنقل",
+      cta: "احجز مراجعة تشغيل",
+      items: [
+        { label: "السيستم", id: "system" },
+        { label: "طريقة الشغل", id: "workflow" },
+        { label: "التجهيز", id: "setup" },
+        { label: "الأسعار", id: "pricing" },
+        { label: "الأسئلة الشائعة", id: "faq" },
+      ],
+    }
+  : {
+      skip: "Skip to main content",
+      home: "Sparkle Auto — home",
+      navigation: "Primary navigation",
+      mobileNavigation: "Navigation menu",
+      language: "Choose language",
+      openMenu: "Open navigation menu",
+      closeMenu: "Close navigation menu",
+      cta: "Book an Operations Review",
+      items: [
+        { label: "System", id: "system" },
+        { label: "How It Works", id: "workflow" },
+        { label: "Setup", id: "setup" },
+        { label: "Pricing", id: "pricing" },
+        { label: "FAQ", id: "faq" },
+      ],
+    };
+
+const localeRoot = isArabic ? "/" : "/en/";
+const sectionHref = (id: string) => `${localeRoot}#${id}`;
+const ctaHref = `${localeRoot}#application`;
+---
+
+<sparkle-header>
+  <a class="skip-link" href="#main-content">{content.skip}</a>
+
+  <header class="site-header" data-site-header>
+    <div class="site-header__shell">
+      <div class="site-header__inner">
+        <a class="brand" href={localeRoot} aria-label={content.home}>
+          <Image
+            class="brand__mark"
+            src={logo}
+            width={64}
+            height={64}
+            format="webp"
+            quality={90}
+            alt=""
+            loading="eager"
+            decoding="async"
+          />
+          <span class="brand__name" dir="ltr">Sparkle Auto</span>
+        </a>
+
+        <nav class="desktop-nav" aria-label={content.navigation}>
+          <ul>
+            {content.items.map((item) => (
+              <li><a href={sectionHref(item.id)}>{item.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <nav class="language-switch language-switch--inline" aria-label={content.language}>
+            <a href="/en/" lang="en" hreflang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>
+            <span aria-hidden="true">|</span>
+            <a href="/" lang="ar" hreflang="ar" aria-current={locale === "ar" ? "page" : undefined}>AR</a>
+          </nav>
+
+          <a class="primary-cta" href={ctaHref}>{content.cta}</a>
+
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-label={content.openMenu}
+            aria-expanded="false"
+            aria-controls="header-menu"
+            data-open-label={content.openMenu}
+            data-close-label={content.closeMenu}
+            data-menu-toggle
+          >
+            <span class="menu-toggle__line" aria-hidden="true"></span>
+            <span class="menu-toggle__line" aria-hidden="true"></span>
+            <span class="menu-toggle__line" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="header-menu" data-menu-panel hidden inert>
+        <nav aria-label={content.mobileNavigation}>
+          <ul>
+            {content.items.map((item, index) => (
+              <li>
+                <a href={sectionHref(item.id)}>
+                  <span class="menu-panel__number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                  <span>{item.label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <nav class="language-switch language-switch--panel" aria-label={content.language}>
+          <a href="/en/" lang="en" hreflang="en" aria-current={locale === "en" ? "page" : undefined}>English</a>
+          <a href="/" lang="ar" hreflang="ar" aria-current={locale === "ar" ? "page" : undefined}>العربية</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+</sparkle-header>
+
+<script>
+  class SparkleHeader extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.ready === "true") return;
+      this.dataset.ready = "true";
+
+      const toggle = this.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+      const panel = this.querySelector<HTMLElement>("[data-menu-panel]");
+      const header = this.querySelector<HTMLElement>("[data-site-header]");
+
+      if (!toggle || !panel || !header) return;
+
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      let closeTimer = 0;
+
+      const setLabel = (open: boolean) => {
+        const label = open ? toggle.dataset.closeLabel : toggle.dataset.openLabel;
+        if (label) toggle.setAttribute("aria-label", label);
+      };
+
+      const openMenu = () => {
+        window.clearTimeout(closeTimer);
+        panel.hidden = false;
+        panel.inert = false;
+        toggle.setAttribute("aria-expanded", "true");
+        setLabel(true);
+
+        requestAnimationFrame(() => {
+          this.dataset.menuOpen = "true";
+          panel.querySelector<HTMLAnchorElement>("a")?.focus({ preventScroll: true });
+        });
+      };
+
+      const closeMenu = (restoreFocus = false) => {
+        window.clearTimeout(closeTimer);
+        this.dataset.menuOpen = "false";
+        panel.inert = true;
+        toggle.setAttribute("aria-expanded", "false");
+        setLabel(false);
+
+        const finish = () => {
+          panel.hidden = true;
+          if (restoreFocus) toggle.focus({ preventScroll: true });
+        };
+
+        if (reducedMotion.matches) {
+          finish();
+        } else {
+          closeTimer = window.setTimeout(finish, 280);
+        }
+      };
+
+      toggle.addEventListener("click", () => {
+        const isOpen = toggle.getAttribute("aria-expanded") === "true";
+        if (isOpen) closeMenu(true);
+        else openMenu();
+      });
+
+      panel.addEventListener("click", (event) => {
+        if ((event.target as Element).closest("a")) closeMenu(false);
+      });
+
+      document.addEventListener("pointerdown", (event) => {
+        if (toggle.getAttribute("aria-expanded") === "true" && !this.contains(event.target as Node)) {
+          closeMenu(false);
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+          event.preventDefault();
+          closeMenu(true);
+        }
+      });
+
+      const updateStickyState = () => {
+        header.toggleAttribute("data-scrolled", window.scrollY > 12);
+      };
+
+      updateStickyState();
+      window.addEventListener("scroll", updateStickyState, { passive: true });
+    }
+  }
+
+  if (!customElements.get("sparkle-header")) {
+    customElements.define("sparkle-header", SparkleHeader);
+  }
+</script>

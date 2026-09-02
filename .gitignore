@@ -15,6 +15,9 @@ build/
 out/
 coverage/
 .next/
+.astro/
+playwright-report/
+test-results/
 
 # Tool caches
 .cache/
@@ -34,4 +37,3 @@ pnpm-debug.log*
 .vscode/
 .DS_Store
 Thumbs.db
-
