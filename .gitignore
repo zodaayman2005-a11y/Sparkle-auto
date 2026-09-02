@@ -16,6 +16,7 @@ out/
 coverage/
 .next/
 .astro/
+.vercel/
 playwright-report/
 test-results/
 
