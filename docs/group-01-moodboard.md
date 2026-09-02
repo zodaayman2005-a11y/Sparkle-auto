@@ -1,6 +1,7 @@
 # GROUP 01 — Approved Visual Moodboard
 
-Status: **APPROVED GLOBAL MOODBOARD**  
+Status: **APPROVED GLOBAL MOODBOARD**
+
 Purpose: global brand and mood anchor. It does not replace the section-specific reference image supplied with each later group.
 
 ## Official identity anchor
@@ -54,4 +55,3 @@ Character cues to preserve:
 ## Rejection filter
 
 A concept fails this moodboard if it becomes dark, black-dominant, glassy, gradient-heavy, generically SaaS, overly rounded, visually chaotic, fake-product-led, or dependent on stock car-wash photography.
-

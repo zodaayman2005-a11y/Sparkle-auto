@@ -1,7 +1,9 @@
 # GROUP 01 — Project Understanding + Base Visual & Interaction System
 
-Status: **APPROVED / LOCKED FOR IMPLEMENTATION**  
-Scope: Base system only — no Header, Hero, or final landing-page section is included here.  
+Status: **APPROVED / LOCKED FOR IMPLEMENTATION**
+
+Scope: Base system only — no Header, Hero, or final landing-page section is included here.
+
 Reference language: **Arabic / RTL**. Secondary language: **English / LTR**.
 
 Approved global visual moodboard: [group-01-moodboard.md](group-01-moodboard.md).
