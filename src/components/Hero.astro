@@ -34,13 +34,13 @@ const copy = isArabic
     }
   : {
       eyebrow: "Complete Management System for Car Washes",
-      headline: ["You don't have to", "stay at the wash to", "stay in control."],
+      headline: ["You don’t have to", "stay at the wash to", "stay in control."],
       descriptionLead:
         "Sparkle Auto brings your bookings, car status, team, inventory, revenue, and customers into one place.",
       descriptionPivot: "Instead of scattered calls and reports:",
       descriptionClose:
         "Open the system and know what's happening at your car wash — even when you're away.",
-      primaryCta: "Book an Operations Review for Your Branches",
+      primaryCta: "Book an Operations Review",
       secondaryCta: "See the System in Action",
       productCaption: "Your car wash in your pocket.",
       desktopAlt:
@@ -53,16 +53,28 @@ const localeRoot = isArabic ? "/" : "/en/";
 ---
 
 <section class="hero" aria-labelledby="hero-title">
-  <picture aria-hidden="true">
-    <source media="(max-width: 56rem)" srcset={heroWaterMobile.src} />
+  <div class="hero__water-stage" aria-hidden="true">
+    <div class="hero__water-piece hero__water-piece--main">
+      <img src={heroWater.src} alt="" width={heroWater.width} height={heroWater.height} loading="eager" fetchpriority="high" decoding="async" />
+    </div>
+    <div class="hero__water-piece hero__water-piece--left">
+      <img src={heroWater.src} alt="" width={heroWater.width} height={heroWater.height} loading="lazy" decoding="async" />
+    </div>
+    <div class="hero__water-piece hero__water-piece--right">
+      <img src={heroWater.src} alt="" width={heroWater.width} height={heroWater.height} loading="lazy" decoding="async" />
+    </div>
+    <div class="hero__water-piece hero__water-piece--halftone">
+      <img src={heroWater.src} alt="" width={heroWater.width} height={heroWater.height} loading="lazy" decoding="async" />
+    </div>
+  </div>
+
+  <picture class="hero__water-mobile" aria-hidden="true">
     <img
-      class="hero__water"
-      src={heroWater.src}
+      src={heroWaterMobile.src}
       alt=""
-      width={heroWater.width}
-      height={heroWater.height}
-      loading="eager"
-      fetchpriority="high"
+      width={heroWaterMobile.width}
+      height={heroWaterMobile.height}
+      loading="lazy"
       decoding="async"
     />
   </picture>
@@ -103,6 +115,30 @@ const localeRoot = isArabic ? "/" : "/en/";
           <span>{copy.secondaryCta}</span>
           <span class="hero__button-arrow" aria-hidden="true">→</span>
         </a>
+      </div>
+
+      <div class="hero__trust" role="group" aria-labelledby={`hero-trust-title-${locale}`} dir="ltr">
+        <svg class="hero__trust-shield" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+          <circle cx="24" cy="24" r="24" fill="#01A2FF"></circle>
+          <path d="M24 9.5 35 14v9.2c0 7.2-4.4 12.4-11 15.3-6.6-2.9-11-8.1-11-15.3V14Z" fill="#fff"></path>
+          <path d="m18.5 23.8 3.6 3.7 7.7-8" fill="none" stroke="#01A2FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <p class="hero__trust-title" id={`hero-trust-title-${locale}`}>Built for car wash owners in Egypt</p>
+        <ul class="hero__trust-list">
+          {[
+            "Easy to use",
+            "Works on any device",
+            "Local support",
+          ].map((item) => (
+            <li>
+              <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                <circle cx="8" cy="8" r="6.5" fill="none" stroke="#01A2FF"></circle>
+                <path d="m5 8 2 2 4-4" fill="none" stroke="#01A2FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
 
@@ -183,8 +219,6 @@ const localeRoot = isArabic ? "/" : "/en/";
         decoding="async"
         aria-hidden="true"
       />
-
-      <figcaption class="hero__product-caption">{copy.productCaption}</figcaption>
     </figure>
   </div>
 </section>
@@ -192,22 +226,92 @@ const localeRoot = isArabic ? "/" : "/en/";
 <style>
   .hero {
     position: relative;
-    min-height: 100svh;
-    margin-block-start: -8.5rem;
+    height: 100svh;
+    min-height: 0;
+    margin-block-start: -7rem;
     overflow: hidden;
     background: #fcfeff;
     isolation: isolate;
   }
 
-  .hero__water {
+  .hero__water-stage,
+  .hero__water-mobile {
     position: absolute;
     z-index: 0;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill;
     pointer-events: none;
     user-select: none;
+  }
+
+  .hero__water-mobile {
+    display: none;
+  }
+
+  .hero__water-piece {
+    position: absolute;
+    overflow: hidden;
+  }
+
+  .hero__water-piece img {
+    position: absolute;
+    display: block;
+    width: 1536px;
+    max-width: none;
+    height: 864px;
+  }
+
+  .hero__water-piece--main {
+    top: 150px;
+    left: calc(50% - 178px);
+    width: 635px;
+    height: 430px;
+    opacity: 0.78;
+  }
+
+  .hero__water-piece--main img {
+    top: -167px;
+    left: -595px;
+  }
+
+  .hero__water-piece--left {
+    top: 730px;
+    left: 0;
+    width: 175px;
+    height: 134px;
+    opacity: 0.64;
+  }
+
+  .hero__water-piece--left img {
+    top: -700px;
+    left: 0;
+  }
+
+  .hero__water-piece--right {
+    top: 740px;
+    left: calc(50% + 607px);
+    width: 161px;
+    height: 124px;
+    opacity: 0.64;
+  }
+
+  .hero__water-piece--right img {
+    top: -721px;
+    left: -1383px;
+  }
+
+  .hero__water-piece--halftone {
+    top: 190px;
+    left: calc(50% + 612px);
+    width: 156px;
+    height: 335px;
+    opacity: 0.48;
+  }
+
+  .hero__water-piece--halftone img {
+    top: -190px;
+    left: -1380px;
   }
 
   .hero__canvas {
@@ -215,7 +319,8 @@ const localeRoot = isArabic ? "/" : "/en/";
     z-index: 1;
     width: 100%;
     max-width: 96rem;
-    min-height: 100svh;
+    height: 100%;
+    min-height: 0;
     margin-inline: auto;
     direction: ltr;
   }
@@ -223,10 +328,10 @@ const localeRoot = isArabic ? "/" : "/en/";
   .hero__content {
     position: absolute;
     z-index: 12;
-    top: 17.13%;
-    left: 4.1667%;
+    top: 150px;
+    left: 64px;
     display: flex;
-    width: 32.62%;
+    width: 525px;
     flex-direction: column;
     align-items: flex-start;
     color: var(--deep-navy);
@@ -235,16 +340,18 @@ const localeRoot = isArabic ? "/" : "/en/";
 
   .hero__eyebrow {
     display: inline-flex;
-    min-height: 3rem;
+    width: 440px;
+    height: 41px;
+    box-sizing: border-box;
     align-items: center;
     margin: 0;
-    padding: 0.55rem 0.85rem;
+    padding: 0 13px;
     border: 2px solid var(--spark-blue);
-    border-radius: var(--radius-control);
+    border-radius: 6px;
     background: var(--white);
-    box-shadow: var(--shadow-1);
-    color: var(--accent-blue-aa);
-    font-size: clamp(0.84rem, 1.17vw, 1.125rem);
+    box-shadow: 4px 4px 0 var(--deep-navy);
+    color: #0064ad;
+    font-size: 18px;
     font-weight: 800;
     line-height: 1.2;
     white-space: nowrap;
@@ -256,12 +363,12 @@ const localeRoot = isArabic ? "/" : "/en/";
   }
 
   .hero__headline {
-    margin: 0.9rem 0 0;
+    margin: 20px 0 0;
     color: var(--deep-navy);
-    font-size: clamp(2.15rem, 3.52vw, 3.375rem);
+    font-size: 63px;
     font-weight: 900;
     letter-spacing: -0.035em;
-    line-height: 1.06;
+    line-height: 0.95;
   }
 
   .hero__headline span {
@@ -269,28 +376,54 @@ const localeRoot = isArabic ? "/" : "/en/";
     white-space: nowrap;
   }
 
+  html[lang="en"] .hero__headline span:nth-child(1) {
+    transform: scaleX(0.99);
+    transform-origin: left center;
+  }
+
+  html[lang="en"] .hero__headline span:nth-child(2) {
+    transform: scaleX(0.925);
+    transform-origin: left center;
+  }
+
+  html[lang="ar"] .hero__headline {
+    letter-spacing: 0;
+    text-align: right;
+  }
+
+  html[lang="ar"] .hero__headline span:nth-child(2) {
+    transform: scaleX(0.965);
+    transform-origin: right center;
+  }
+
+  html[lang="ar"] .hero__headline span:nth-child(3) {
+    transform: scaleX(0.87);
+    transform-origin: right center;
+  }
+
   .hero__headline-highlight {
     color: var(--spark-blue);
+    letter-spacing: -0.01em;
   }
 
   .hero__headline-accent {
     position: absolute;
     z-index: 13;
-    top: 0.65rem;
-    left: 100%;
-    width: 2.75rem;
-    height: 3.125rem;
+    top: 19px;
+    left: 502px;
+    width: 44px;
+    height: 50px;
     object-fit: fill;
     pointer-events: none;
   }
 
   .hero__description {
-    width: 88%;
-    margin-block-start: 1.25rem;
-    color: var(--ink-muted);
-    font-size: clamp(0.9rem, 1.08vw, 1.04rem);
-    font-weight: 520;
-    line-height: 1.42;
+    width: 500px;
+    margin-block-start: 20px;
+    color: #0c264b;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
   }
 
   .hero__description p {
@@ -298,39 +431,46 @@ const localeRoot = isArabic ? "/" : "/en/";
   }
 
   .hero__description p + p {
-    margin-block-start: 0.2rem;
+    margin-block-start: 0;
   }
 
   .hero__description strong {
-    color: var(--deep-navy);
-    font-weight: 800;
+    color: inherit;
+    font-weight: 500;
   }
 
   .hero__actions {
+    position: absolute;
+    top: 413px;
+    left: 0;
     display: flex;
-    width: 100%;
+    width: 499px;
+    height: 56px;
     align-items: stretch;
-    gap: 1.375rem;
-    margin-block-start: 2rem;
+    gap: 27px;
+    margin: 0;
     direction: ltr;
   }
 
   .hero__button {
     display: inline-flex;
-    min-height: 3.75rem;
-    flex: 1 1 0;
+    height: 56px;
+    min-height: 56px;
+    flex: none;
+    box-sizing: border-box;
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    padding: 0.75rem 0.9rem;
-    border: var(--border-default) solid var(--deep-navy);
-    border-radius: var(--radius-button);
+    padding: 0 14px;
+    border: 2px solid var(--deep-navy);
+    border-radius: 6px;
     color: var(--deep-navy);
-    font-size: clamp(0.78rem, 0.91vw, 0.88rem);
+    font-size: 16px;
     font-weight: 850;
     line-height: 1.2;
     text-align: center;
     text-decoration: none;
+    white-space: nowrap;
     transition:
       transform var(--motion-micro) var(--ease-standard),
       box-shadow var(--motion-micro) var(--ease-standard),
@@ -338,13 +478,16 @@ const localeRoot = isArabic ? "/" : "/en/";
   }
 
   .hero__button--primary {
+    width: 240px;
     background: var(--spark-blue);
-    box-shadow: var(--shadow-2);
+    box-shadow: 5px 5px 0 var(--deep-navy);
+    color: var(--deep-navy);
   }
 
   .hero__button--secondary {
+    width: 232px;
     background: var(--white);
-    box-shadow: var(--shadow-1);
+    box-shadow: 5px 5px 0 var(--deep-navy);
   }
 
   .hero__button:hover {
@@ -368,6 +511,71 @@ const localeRoot = isArabic ? "/" : "/en/";
     line-height: 0;
   }
 
+  .hero__trust {
+    position: absolute;
+    z-index: 13;
+    top: 494px;
+    left: 0;
+    display: grid;
+    width: 498px;
+    height: 93px;
+    box-sizing: border-box;
+    grid-template-columns: 52px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 13px;
+    padding: 12px 14px 11px 12px;
+    border: 2px solid #03132e;
+    border-radius: 7px;
+    background: #fff;
+    box-shadow: 5px 5px 0 #03132e;
+    color: #03132e;
+    font-family: "Nunito Variable", Nunito, system-ui, sans-serif;
+    text-align: left;
+  }
+
+  .hero__trust-shield {
+    grid-row: 1 / 3;
+    width: 52px;
+    height: 52px;
+    align-self: start;
+    margin-block-start: 1px;
+  }
+
+  .hero__trust-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+
+  .hero__trust-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 8px 0 0;
+    padding: 0;
+    color: #0c264b;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.2;
+    list-style: none;
+    white-space: nowrap;
+  }
+
+  .hero__trust-list li {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .hero__trust-list svg {
+    width: 16px;
+    height: 16px;
+    flex: none;
+  }
+
   .hero__visual {
     position: absolute;
     z-index: 2;
@@ -380,69 +588,72 @@ const localeRoot = isArabic ? "/" : "/en/";
   .hero__main-spark {
     position: absolute;
     z-index: 4;
-    inset-block-start: 15.4%;
-    inset-inline-start: 72.79%;
-    width: 2.22%;
-    height: 4.98%;
+    top: 133px;
+    left: 1118px;
+    width: 34px;
+    height: 50px;
     object-fit: fill;
   }
 
   .hero__laptop {
     position: absolute;
     z-index: 5;
-    inset-block-start: 34.26%;
-    inset-inline-start: 37.96%;
-    width: 44.21%;
+    top: 296px;
+    left: 583px;
+    width: 680px;
     animation: hero-stage-in 620ms var(--ease-standard) both;
   }
 
   .hero__laptop-lid {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 1.68;
-    padding: 0.55rem;
-    border: 4px solid var(--deep-navy);
-    border-radius: 0.9rem 0.9rem 0.35rem 0.35rem;
-    background: #071a3f;
+    width: 100%;
+    aspect-ratio: 1.74;
+    padding: 8px;
+    border: 1px solid #111827;
+    border-radius: 10px 10px 3px 3px;
+    background: #101827;
   }
 
   .hero__desktop-screen {
     display: block;
     width: 100%;
     height: 100%;
-    border-radius: 0.38rem;
+    border-radius: 4px;
     object-fit: cover;
     object-position: center;
   }
 
   .hero__laptop-base {
     position: relative;
-    width: 106%;
-    aspect-ratio: 23 / 1;
-    margin-inline-start: -3%;
-    border: 3px solid var(--deep-navy);
-    border-radius: 0.2rem 0.2rem 1rem 1rem;
-    background: #dce7ee;
+    width: 100%;
+    height: 42px;
+    border: 1px solid #a5afb9;
+    border-block-start-color: #f8fafc;
+    border-radius: 2px 2px 14px 14px;
+    background: #d9e0e6;
+    box-shadow: 0 8px 12px rgb(3 19 46 / 12%);
+    clip-path: polygon(0 0, 100% 0, 98.7% 100%, 1.3% 100%);
   }
 
   .hero__laptop-base span {
     position: absolute;
     inset-block-start: 0;
-    inset-inline-start: 42%;
-    width: 16%;
-    height: 34%;
-    border: 2px solid var(--deep-navy);
+    inset-inline-start: 43%;
+    width: 14%;
+    height: 9px;
+    border: 1px solid #a5afb9;
     border-block-start: 0;
-    border-radius: 0 0 0.35rem 0.35rem;
-    background: #f7fbfd;
+    border-radius: 0 0 6px 6px;
+    background: #eef2f5;
   }
 
   .hero__character {
     position: absolute;
     z-index: 6;
-    inset-block-start: 10.42%;
-    inset-inline-start: 71.09%;
-    width: 23.44%;
+    top: 86px;
+    left: 1092px;
+    width: 360px;
     height: auto;
     object-fit: contain;
     animation: hero-stage-in 620ms 90ms var(--ease-standard) both;
@@ -451,16 +662,16 @@ const localeRoot = isArabic ? "/" : "/en/";
   .hero__phone {
     position: absolute;
     z-index: 8;
-    inset-block-start: 48.38%;
-    inset-inline-start: 75.39%;
+    top: 422px;
+    left: 1158px;
     overflow: hidden;
-    width: 9.77%;
-    aspect-ratio: 150 / 352;
-    padding: 0.35rem;
-    border: 4px solid var(--deep-navy);
-    border-radius: 1.65rem;
+    width: 149px;
+    height: 352px;
+    padding: 5px;
+    border: 3px solid #071a3f;
+    border-radius: 25px;
     background: #071a3f;
-    box-shadow: var(--shadow-1);
+    box-shadow: 3px 4px 0 rgb(3 19 46 / 85%);
     animation: hero-stage-in 620ms 140ms var(--ease-standard) both;
   }
 
@@ -488,10 +699,10 @@ const localeRoot = isArabic ? "/" : "/en/";
   .hero__speech {
     position: absolute;
     z-index: 9;
-    inset-block-start: 13.08%;
-    inset-inline-start: 88.87%;
-    width: 8.59%;
-    aspect-ratio: 132 / 82;
+    top: 113px;
+    left: 1365px;
+    width: 132px;
+    height: 82px;
     animation: hero-sticker-in 420ms 260ms var(--ease-standard) both;
   }
 
@@ -521,29 +732,12 @@ const localeRoot = isArabic ? "/" : "/en/";
   .hero__speech-spark {
     position: absolute;
     z-index: 11;
-    inset-block-start: 12.5%;
-    inset-inline-start: 95.57%;
-    width: 1.83%;
-    height: 4.28%;
+    top: 108px;
+    left: 1468px;
+    width: 28px;
+    height: 37px;
     object-fit: fill;
     animation: hero-sticker-in 420ms 330ms var(--ease-standard) both;
-  }
-
-  .hero__product-caption {
-    position: absolute;
-    z-index: 10;
-    top: 86.5%;
-    left: 43.8%;
-    width: 19.5%;
-    color: var(--spark-blue);
-    direction: rtl;
-    font-size: clamp(0.92rem, 1.3vw, 1.25rem);
-    font-weight: 850;
-    text-align: center;
-  }
-
-  html[lang="en"] .hero__product-caption {
-    direction: ltr;
   }
 
   @keyframes hero-stage-in {
@@ -597,11 +791,27 @@ const localeRoot = isArabic ? "/" : "/en/";
     }
   }
 
-  @media (max-width: 56rem) {
+  @media (max-width: 75rem) {
     .hero {
+      height: auto;
       min-height: auto;
-      margin-block-start: -5.5rem;
-      padding-block-start: 5.5rem;
+      margin-block-start: -7rem;
+      padding-block-start: 7rem;
+    }
+
+    .hero__water-stage {
+      display: none;
+    }
+
+    .hero__water-mobile {
+      display: block;
+    }
+
+    .hero__water-mobile img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
     }
 
     .hero__canvas {
@@ -633,6 +843,13 @@ const localeRoot = isArabic ? "/" : "/en/";
       line-height: 1.1;
     }
 
+    .hero__headline span,
+    html[lang="ar"] .hero__headline span:nth-child(2),
+    html[lang="ar"] .hero__headline span:nth-child(3) {
+      white-space: normal;
+      transform: none;
+    }
+
     .hero__headline-accent {
       inset-block-start: 0.25rem;
       inset-inline-start: auto;
@@ -653,6 +870,11 @@ const localeRoot = isArabic ? "/" : "/en/";
     }
 
     .hero__actions {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 100%;
+      height: auto;
       flex-direction: column;
       gap: 0.9rem;
       margin-block-start: 1.5rem;
@@ -663,6 +885,31 @@ const localeRoot = isArabic ? "/" : "/en/";
       min-height: 3.5rem;
       flex: none;
       font-size: 0.95rem;
+    }
+
+    .hero__button--primary,
+    .hero__button--secondary {
+      width: 100%;
+    }
+
+    .hero__trust {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 100%;
+      height: auto;
+      min-height: 93px;
+      margin-block-start: 1.5rem;
+    }
+
+    .hero__trust-title {
+      white-space: normal;
+    }
+
+    .hero__trust-list {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      white-space: normal;
     }
 
     .hero__visual {
@@ -709,12 +956,16 @@ const localeRoot = isArabic ? "/" : "/en/";
       box-shadow: var(--shadow-1);
     }
 
-    .hero__product-caption {
-      position: relative;
-      inset: auto;
-      order: 3;
-      width: auto;
-      font-size: 1.15rem;
+  }
+
+  @media (max-width: 48rem) {
+    .hero {
+      margin-block-start: -5.5rem;
+      padding-block-start: 5.5rem;
+    }
+
+    .hero__headline-accent {
+      display: none;
     }
   }
 

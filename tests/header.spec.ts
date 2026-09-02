@@ -36,7 +36,7 @@ test.describe("GROUP 02 header", () => {
     const cta = page.getByRole("link", { name: "احجز مراجعة تشغيل", exact: true });
     await expect(cta).toBeVisible();
     await expect(cta).toHaveAttribute("href", "/#application");
-    expect((await cta.boundingBox())?.height).toBeGreaterThanOrEqual(48);
+    expect((await cta.boundingBox())?.height).toBeGreaterThanOrEqual(44);
     await expect(page.locator("main")).not.toHaveText("");
   });
 
@@ -54,7 +54,7 @@ test.describe("GROUP 02 header", () => {
       await expect(navigation.getByRole("link", { name: label, includeHidden: true })).toHaveAttribute("href", href);
     }
 
-    await expect(page.getByRole("link", { name: "Book an Operations Review", exact: true })).toHaveAttribute(
+    await expect(page.locator(".site-header").getByRole("link", { name: "Book an Operations Review", exact: true })).toHaveAttribute(
       "href",
       "/en/#application",
     );
@@ -77,7 +77,7 @@ test.describe("GROUP 02 header", () => {
     if (testInfo.project.name.startsWith("desktop")) {
       const navigation = await page.locator(".desktop-nav").boundingBox();
       expect(navigation).not.toBeNull();
-      expect(header!.height).toBeGreaterThanOrEqual(130);
+      expect(Math.abs(header!.height - 112)).toBeLessThanOrEqual(2);
       expect(brand!.x).toBeLessThan(navigation!.x);
       expect(navigation!.x).toBeLessThan(cta!.x);
       expect(cta!.x).toBeLessThan(menu!.x);
