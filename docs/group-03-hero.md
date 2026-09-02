@@ -1,8 +1,10 @@
 # GROUP 03 — Hero
 
-Status: **BUILT / QA PASSED / AWAITING OWNER APPROVAL**
+Status: **BUILT / QA PASSED / LIVE / AWAITING OWNER APPROVAL**
 
 Scope: Hero only. GROUP 04 has not been started.
+
+Live review URL: `https://https-github-com-zodaayman2005-a11y.vercel.app/`
 
 ## Reference and product truth
 
@@ -118,6 +120,7 @@ The water layer never covers text, screenshots, the character’s face, phone, o
 - Browser console and uncaught errors: clean; only normal Vite development connection messages.
 - Measured desktop geometry at 1536×864: copy `64,150,501×474`; laptop `583,298,679×435`; phone `1158,420,150×352`; character stage `1092,92,360×729`; main spark `1118,135,34×43`; bubble stage `1365,115,132×82`; accent `565,208,44×50`.
 - 21st review: 0 errors and 0 warnings; informational findings only identify canonical color declarations in the token file, so no unsafe auto-fix was applied.
+- Production verification: Arabic desktop 1536×864 and Arabic mobile 390×844 loaded successfully from Vercel, both real screenshots retained their expected dimensions, mobile had zero horizontal overflow, the responsive water source selected only the mobile asset in a fresh session, and the browser error buffer was empty.
 
 ## Acceptance gate
 
@@ -131,7 +134,7 @@ The water layer never covers text, screenshots, the character’s face, phone, o
 - [x] Dedicated mobile sequence implemented.
 - [x] Motion remains lightweight and reduced-motion safe.
 - [x] Automated checks complete.
-- [ ] Final live-deployment verification complete.
+- [x] Final live-deployment verification complete.
 - [ ] Owner approval received.
 
 Do not begin GROUP 04 until the owner approves GROUP 03.
