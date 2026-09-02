@@ -1,6 +1,7 @@
 :root {
   color-scheme: light;
   --spark-blue: #0796f6;
+  --accent-blue-aa: #0076c9;
   --fresh-blue: #45b7ff;
   --ice-blue: #ddf3ff;
   --cloud-blue: #f6fbff;
@@ -91,7 +92,7 @@ button {
   inset-block-start: 0;
   z-index: 100;
   border-block-end: 2px solid transparent;
-  background: var(--cloud-blue);
+  background: transparent;
   transition:
     border-color var(--motion-micro) var(--ease-standard),
     background-color var(--motion-micro) var(--ease-standard);
@@ -402,7 +403,7 @@ sparkle-header[data-menu-open="true"] .menu-panel {
 }
 
 .page-shell {
-  min-height: calc(100svh - 8.5rem);
+  min-height: 100svh;
 }
 
 @media (max-width: 71.25rem) {
@@ -445,7 +446,7 @@ sparkle-header[data-menu-open="true"] .menu-panel {
   }
 
   .page-shell {
-    min-height: calc(100svh - 5.5rem);
+    min-height: 100svh;
   }
 }
 

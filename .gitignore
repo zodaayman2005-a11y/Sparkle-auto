@@ -19,6 +19,7 @@ coverage/
 .vercel/
 playwright-report/
 test-results/
+artifacts/
 
 # Tool caches
 .cache/

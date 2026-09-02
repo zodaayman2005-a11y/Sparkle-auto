@@ -33,11 +33,11 @@ test.describe("GROUP 02 header", () => {
       await expect(navigation.getByRole("link", { name: label, includeHidden: true })).toHaveAttribute("href", href);
     }
 
-    const cta = page.getByRole("link", { name: "احجز مراجعة تشغيل" });
+    const cta = page.getByRole("link", { name: "احجز مراجعة تشغيل", exact: true });
     await expect(cta).toBeVisible();
     await expect(cta).toHaveAttribute("href", "/#application");
     expect((await cta.boundingBox())?.height).toBeGreaterThanOrEqual(48);
-    await expect(page.locator("main")).toHaveText("");
+    await expect(page.locator("main")).not.toHaveText("");
   });
 
   test("renders the approved English LTR copy and destinations", async ({ page }, testInfo) => {
@@ -54,7 +54,10 @@ test.describe("GROUP 02 header", () => {
       await expect(navigation.getByRole("link", { name: label, includeHidden: true })).toHaveAttribute("href", href);
     }
 
-    await expect(page.getByRole("link", { name: "Book an Operations Review" })).toHaveAttribute("href", "/en/#application");
+    await expect(page.getByRole("link", { name: "Book an Operations Review", exact: true })).toHaveAttribute(
+      "href",
+      "/en/#application",
+    );
     await expect(page.locator('.language-switch--inline a[lang="en"]')).toHaveAttribute("aria-current", "page");
   });
 
@@ -100,7 +103,7 @@ test.describe("GROUP 02 header", () => {
     await expect(toggle).toHaveAttribute("aria-expanded", "true");
     await expect(toggle).toHaveAccessibleName("إغلاق قائمة التنقل");
     await expect(page.getByRole("navigation", { name: "قائمة التنقل" })).toBeVisible();
-    await expect(page.getByRole("link", { name: "السيستم" })).toBeFocused();
+    await expect(page.getByRole("link", { name: "السيستم", exact: true })).toBeFocused();
 
     await page.keyboard.press("Escape");
     await expect(toggle).toHaveAttribute("aria-expanded", "false");

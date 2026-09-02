@@ -4,7 +4,7 @@ Arabic-first bilingual landing page for Sparkle Auto, a browser-based booking an
 
 ## Current phase
 
-GROUP 01 — Project Understanding + Base Visual & Interaction System is approved and locked. GROUP 02 — Header is approved, locked, and has passed automated QA. GROUP 03 — Hero has not started.
+GROUP 01 — Project Understanding + Base Visual & Interaction System is approved and locked. GROUP 02 — Header is approved, locked, and has passed automated QA. GROUP 03 — Hero is built, has passed QA, and is awaiting owner approval.
 
 Start with:
 
@@ -12,6 +12,7 @@ Start with:
 - [Approved Group 01 visual moodboard](docs/group-01-moodboard.md)
 - [Machine-readable base tokens](docs/base-tokens.json)
 - [GROUP 02 Header brief, reference analysis, and QA](docs/group-02-header.md)
+- [GROUP 03 Hero build, asset production, and QA](docs/group-03-hero.md)
 - [Official brand assets](assets/brand/README.md)
 
 ## Asset separation

@@ -26,13 +26,15 @@
     ],
     "instructions": [
       "docs/group-01-base-system.md",
-      "docs/group-02-header.md"
+      "docs/group-02-header.md",
+      "docs/group-03-hero.md"
     ]
   },
   "design": {
     "colorMode": "light",
     "colors": {
       "primary": "#0796F6",
+      "accessibleAccent": "#0076C9",
       "fresh": "#45B7FF",
       "surface": "#F6FBFF",
       "surfaceAccent": "#DDF3FF",
@@ -68,7 +70,8 @@
   },
   "components": {
     "installed": [
-      "SiteHeader"
+      "SiteHeader",
+      "Hero"
     ],
     "preferredPrimitives": [
       "semantic HTML",
@@ -79,7 +82,10 @@
       "physical CTA press",
       "hard offset shadow",
       "direction-aware bilingual navigation",
-      "accessible dropdown navigation"
+      "accessible dropdown navigation",
+      "reference-positioned desktop hero stage",
+      "real product screenshot framing",
+      "dedicated stacked mobile hero"
     ]
   },
   "constraints": {
@@ -116,13 +122,20 @@
       "id": "group-02-header",
       "decision": "One shared bilingual Header component with mirrored RTL/LTR composition and a functional menu at all sizes",
       "reason": "Matches the supplied reference while preserving the approved Base and accessible mobile behavior"
+    },
+    {
+      "id": "group-03-hero",
+      "decision": "One shared bilingual Hero with a fixed copy-left/product-right desktop composition, internally RTL Arabic copy, real Sparkle Auto screens, and ChatGPT Image decorative artwork",
+      "reason": "Maximizes positional similarity to the supplied reference without mirroring or fabricating product UI"
     }
   ],
   "evidence": [
     "docs/group-01-base-system.md",
     "docs/group-01-moodboard.md",
     "docs/group-02-header.md",
-    "assets/references/group-02-header/header-reference.jpg"
+    "assets/references/group-02-header/header-reference.jpg",
+    "docs/group-03-hero.md",
+    "assets/references/group-03-hero/hero-reference.jpg"
   ],
-  "generatedAt": "2026-09-02T18:01:36.728Z"
+  "generatedAt": "2026-09-02T23:45:00.000Z"
 }
