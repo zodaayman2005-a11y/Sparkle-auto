@@ -1,0 +1,786 @@
+{
+  "$schemaVersion": "3.1",
+  "locale": "en",
+  "direction": "ltr",
+  "_meta": {
+    "source": "Sparkle-Auto-Final-Unified-17-Group-Codex-Master-v3.1",
+    "status": "GROUP 00 bilingual copy lock",
+    "unresolved": [
+      {
+        "id": "BLK-05",
+        "path": "sections.pricing.plans.expansion.price",
+        "reason": "The Expansion Plan price has not been approved."
+      },
+      {
+        "id": "BLK-05b",
+        "path": "sections.pricing.plans.operations.features[1]",
+        "reason": "The period or basis for “up to 600 cars” has not been defined."
+      },
+      {
+        "id": "BLK-06",
+        "path": "ctas.cta-final-whatsapp",
+        "reason": "The button label is approved, but the WhatsApp number and message are not."
+      },
+      {
+        "id": "BLK-07",
+        "path": "sections.strategy.videoTitle, sections.productExplorer.videoTitle",
+        "reason": "Video files, posters, captions, and transcripts are not available."
+      },
+      {
+        "id": "BLK-09",
+        "path": "sections.footer",
+        "reason": "Privacy, terms, and social links are not approved, so they are omitted from visible copy."
+      }
+    ],
+    "pendingOptionSets": [
+      {
+        "field": "governorate",
+        "reason": "The governorate/area option list is not defined in the source."
+      },
+      {
+        "field": "best_contact_time",
+        "reason": "The preferred contact-time options are not defined in the source."
+      }
+    ]
+  },
+  "brand": {
+    "name": "Sparkle Auto",
+    "tagline": "Your car wash in your pocket.",
+    "logoAlt": "Sparkle Auto"
+  },
+  "common": {
+    "languages": {
+      "ar": "العربية",
+      "en": "English"
+    },
+    "required": "Required",
+    "optional": "Optional",
+    "or": "or",
+    "currency": "EGP",
+    "monthly": "per month",
+    "yearly": "per year",
+    "close": "Close",
+    "previous": "Previous",
+    "next": "Next",
+    "showTranscript": "Show video transcript",
+    "hideTranscript": "Hide video transcript"
+  },
+  "navigation": {
+    "items": [
+      {
+        "id": "system",
+        "label": "System",
+        "href": "#what-is-sparkle"
+      },
+      {
+        "id": "how-it-works",
+        "label": "How It Works",
+        "href": "#operation-flow"
+      },
+      {
+        "id": "setup",
+        "label": "Setup",
+        "href": "#setup"
+      },
+      {
+        "id": "pricing",
+        "label": "Pricing",
+        "href": "#pricing"
+      },
+      {
+        "id": "faq",
+        "label": "FAQ",
+        "href": "#faq"
+      }
+    ]
+  },
+  "ctas": {
+    "cta-header": "Book an Operations Review",
+    "cta-hero-primary": "Book an Operations Review for Your Branches",
+    "cta-hero-secondary": "See the System in Action",
+    "cta-setup": "Book an Operations Review for Your Branches",
+    "cta-plan-operations": "Book a Plan Review",
+    "cta-plan-growth": "Book a Plan Review",
+    "cta-plan-expansion": "Request an Operations Review for Your Branches",
+    "cta-trial": "Book the Review First",
+    "cta-final-primary": "Book an Operations Review for Your Branches",
+    "cta-final-whatsapp": "Talk to Us on WhatsApp",
+    "cta-footer": "Book an Operations Review",
+    "cta-faq-card": "Book an Operations Review"
+  },
+  "sections": {
+    "hero": {
+      "eyebrow": "Complete Management System for Car Washes",
+      "headline": "You don’t have to stay at the wash to stay in control.",
+      "headlineHighlight": "stay in control.",
+      "description": [
+        "Sparkle Auto brings every part of your car-wash operation into one place: bookings, car status, team, inventory, revenue, and customers.",
+        "Instead of scattered calls and reports, open the system and see what’s happening—even when you’re away."
+      ],
+      "microcopy": "A short review where we learn how you operate and tell you honestly whether Sparkle Auto is right for you.",
+      "productCaption": "Your car wash in your pocket.",
+      "productLabels": {
+        "mobile": "Mobile: the real booking experience.",
+        "desktop": "Laptop: the real Overview screen."
+      },
+      "productAlt": {
+        "mobile": "The real booking screen in the Sparkle Auto customer app.",
+        "desktop": "The real Overview screen in the Sparkle Auto dashboard."
+      },
+      "benefits": [
+        "Organized Bookings",
+        "Live Car Status",
+        "Team Management",
+        "Clear Reports"
+      ]
+    },
+    "problem": {
+      "eyebrow": "The Problem",
+      "headline": "A car-wash owner shouldn’t be the call center.",
+      "headlineHighlight": "the call center.",
+      "body": [
+        "If every question, decision, and report has to come back to you, the problem isn’t that business is busy.",
+        "The problem is that your operation depends on you—not on a clear system."
+      ],
+      "questions": [
+        "Has the car finished?",
+        "Who booked 4:00 PM?",
+        "How much did we make today?",
+        "Did the employee show up?",
+        "Are we out of shampoo?",
+        "How is the other branch doing?"
+      ],
+      "summary": "Sparkle Auto doesn’t add another screen to manage—it reduces the number of questions you have to ask."
+    },
+    "whatIsSparkle": {
+      "headline": "Let’s put it simply: what is Sparkle Auto?",
+      "headlineHighlight": "Sparkle Auto?",
+      "body": [
+        "Sparkle Auto is a complete operations and management system built specifically for car-wash businesses.",
+        "It organizes the full journey—from a booking or walk-in through service completion, payment, and the customer’s next visit."
+      ],
+      "ownerDashboard": {
+        "title": "Owner & Team Dashboard",
+        "intro": "Track:",
+        "imageAlt": "The real Sparkle Auto owner dashboard screen.",
+        "features": [
+          "Operations",
+          "Cars",
+          "Employees",
+          "Revenue and expenses",
+          "Inventory",
+          "Customers"
+        ],
+        "permissions": "Each person sees only what their permissions allow."
+      },
+      "customerApp": {
+        "title": "Customer App",
+        "intro": "Customers can:",
+        "imageAlt": "The real booking screen in the Sparkle Auto customer app.",
+        "features": [
+          "Browse services",
+          "Choose a car and branch",
+          "Pick a time",
+          "Book",
+          "Track offers and rewards"
+        ]
+      },
+      "pillars": [
+        {
+          "title": "An Easier Booking Experience",
+          "description": "Your customer books without phone calls or scheduling confusion."
+        },
+        {
+          "title": "Control Your Operation",
+          "description": "Know where every car is, who is responsible, and what the bill is."
+        },
+        {
+          "title": "Customers Who Come Back",
+          "description": "Keep customer history, offers, and rewards in one place."
+        }
+      ],
+      "summary": "Car-wash operations and customer experience in one system."
+    },
+    "whoIsItFor": {
+      "eyebrow": "Who Is It For?",
+      "headline": "Built for car-wash owners who want to run a business—not chase details.",
+      "headlineHighlight": "not chase details.",
+      "checklistTitle": "A good fit if you:",
+      "criteria": [
+        "Run one branch and tracking the operation is getting difficult.",
+        "Run multiple branches.",
+        "Manage bookings across calls, WhatsApp, and a notebook.",
+        "Need to know every car’s status and who is responsible for it.",
+        "Want revenue tied to the service, car, and branch.",
+        "Discover inventory shortages too late.",
+        "Need the team to keep working when you’re away.",
+        "Want to know each customer’s history and whether they return.",
+        "Plan to expand in an organized way."
+      ],
+      "summary": [
+        "You don’t have to be a technology expert.",
+        "Each person sees only the part relevant to their role.",
+        "If your car wash is still only an idea, the operating principles can still help—but the strongest value appears with a real operation."
+      ],
+      "audiences": [
+        "Traditional Car Wash",
+        "Detailing & Protection Center",
+        "Express Service",
+        "Multi-Branch Operation"
+      ]
+    },
+    "strategy": {
+      "eyebrow": "Operations Strategy",
+      "headline": "A strong car wash takes more than extra equipment and staff.",
+      "intro": "Sparkle Auto is built around five operating strategies:",
+      "skipStory": "Skip this story",
+      "videoTitle": "Five Strategies for a Stronger Car Wash",
+      "principleLabel": "Principle",
+      "insideSparkleLabel": "Inside Sparkle Auto",
+      "strategies": [
+        {
+          "number": "01",
+          "title": "Every Car Follows a Clear Route",
+          "principle": "Booking or walk-in → arrival → staff assignment → service → review → payment → handover.",
+          "insideSparkle": "Every car has a status, service, assigned team member, and activity history."
+        },
+        {
+          "number": "02",
+          "title": "Every Number Has a Source",
+          "principle": "Every service, discount, expense, and payment method has to be clear.",
+          "insideSparkle": "Revenue is tied to the car, service, and branch, with expected-versus-actual review and day closing."
+        },
+        {
+          "number": "03",
+          "title": "Everyone Knows Their Role",
+          "principle": "The owner sees the full picture, the manager runs operations, the cashier handles payments, and the worker sees the task.",
+          "insideSparkle": "Roles and permissions + attendance + shifts + responsibilities."
+        },
+        {
+          "number": "04",
+          "title": "The Customer Relationship Doesn’t End After the Wash",
+          "principle": "Every visit helps you understand the customer, their car, and their behavior.",
+          "insideSparkle": "Customer history + cars + visits + wallet + offers + loyalty."
+        },
+        {
+          "number": "05",
+          "title": "Expand the System, Not the Chaos",
+          "principle": "Expansion should not multiply calls and scattered reports.",
+          "insideSparkle": "Monitor every branch in one place while keeping data, permissions, and reports properly separated."
+        }
+      ]
+    },
+    "productExplorer": {
+      "eyebrow": "The Real System",
+      "headline": "Don’t just take our word for it—see the system answer your questions.",
+      "skipStory": "Skip this story",
+      "videoTitle": "See How Sparkle Auto Works",
+      "stories": [
+        {
+          "number": "01",
+          "title": "Overview",
+          "question": "What’s happening at the car wash right now?",
+          "explanation": "A quick view of operations, bookings, cars, revenue, and alerts.",
+          "annotation": "See the day at a glance on one screen",
+          "imageAlt": "The real Sparkle Auto Overview screen."
+        },
+        {
+          "number": "02",
+          "title": "Bookings & Schedule",
+          "question": "Who booked, when, and at which branch?",
+          "explanation": "Bookings and walk-ins in one place, with a clear time and status.",
+          "annotation": "Bookings and walk-ins in the same schedule",
+          "imageAlt": "The real Sparkle Auto Bookings and Schedule screen."
+        },
+        {
+          "number": "03",
+          "title": "Car Status",
+          "question": "How far has the car progressed, and who is responsible for it?",
+          "explanation": "Track each car from arrival to handover.",
+          "annotation": "Every car has a status and an assignee",
+          "imageAlt": "The real Sparkle Auto Car Status screen."
+        },
+        {
+          "number": "04",
+          "title": "Finance & Closing",
+          "question": "How much came in, how much was recorded, and where did the difference come from?",
+          "explanation": "Revenue + expenses + payment methods + services + day closing.",
+          "annotation": "Revenue is tied to the service, car, and branch",
+          "imageAlt": "The real Sparkle Auto Finance and Closing screen."
+        },
+        {
+          "number": "05",
+          "title": "Team & Permissions",
+          "question": "Who showed up, who is responsible, and what can each person do?",
+          "explanation": "Employees + shifts + permissions.",
+          "annotation": "Each role sees only what it needs",
+          "imageAlt": "The real Sparkle Auto Team and Permissions screen."
+        },
+        {
+          "number": "06",
+          "title": "Inventory",
+          "question": "What is about to run out?",
+          "explanation": "Track items, consumption, stock levels, and reordering.",
+          "annotation": "Know what is running low before it runs out",
+          "imageAlt": "The real Sparkle Auto Inventory screen."
+        },
+        {
+          "number": "07",
+          "title": "Customers & Loyalty",
+          "question": "Who keeps coming back—and who has stopped visiting?",
+          "explanation": "Customer history, visits, cars, offers, and rewards.",
+          "annotation": "Customer history, cars, and offers in one place",
+          "imageAlt": "The real Sparkle Auto Customers and Loyalty screen."
+        }
+      ],
+      "summary": [
+        "Bookings",
+        "Operations",
+        "Finance",
+        "Team",
+        "Inventory",
+        "Customers",
+        "Branches"
+      ]
+    },
+    "operationFlow": {
+      "eyebrow": "Complete Operation Flow",
+      "headline": "Connected steps—not disconnected tools.",
+      "steps": [
+        "The customer books or walks in.",
+        "Reception receives the booking.",
+        "The car starts its service journey.",
+        "The task and assignee are set.",
+        "Services and add-ons are recorded.",
+        "Payment is closed.",
+        "The visit is saved to the customer.",
+        "The owner sees the full picture."
+      ],
+      "summary": "The entire work journey stays connected in one place."
+    },
+    "setup": {
+      "eyebrow": "Setup & Preparation",
+      "headline": "We don’t just send you a link and leave you to figure it out.",
+      "description": "We set up the system around the way your car wash operates.",
+      "skipStory": "Skip this story",
+      "workOrderTitle": "Setup Plan",
+      "stamp": "Reviewed",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Understand Your Operation",
+          "items": [
+            "Branches",
+            "Services",
+            "Team",
+            "Bookings",
+            "Day closing",
+            "The main problem"
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Configure the System",
+          "intro": "We add:",
+          "items": [
+            "Branches",
+            "Services and prices",
+            "Users",
+            "Permissions",
+            "Settings"
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Train Each Role",
+          "body": [
+            "The owner, manager, reception, cashier, and worker.",
+            "Each person learns only the part they will use."
+          ]
+        },
+        {
+          "number": "04",
+          "title": "Start with Real Operations",
+          "body": [
+            "Real cars, bookings, and data—not a demo disconnected from day-to-day work."
+          ]
+        },
+        {
+          "number": "05",
+          "title": "Review the Result",
+          "body": [
+            "What worked? What needs adjusting? Did the system create real value?"
+          ]
+        }
+      ],
+      "summary": "Our goal isn’t just to open an account—it’s to make your operation genuinely clearer."
+    },
+    "pricing": {
+      "eyebrow": "Pricing",
+      "headline": "Choose the plan that fits your operation.",
+      "featuresLabel": "Includes:",
+      "plans": {
+        "operations": {
+          "name": "Operations Plan",
+          "price": {
+            "monthly": "EGP 1,290 per month",
+            "yearly": "EGP 12,900 per year"
+          },
+          "description": "Best for one branch and organized day-to-day operations.",
+          "features": [
+            "1 branch",
+            "Up to 600 cars",
+            "Bookings and walk-ins",
+            "Schedule and car status",
+            "Services and packages",
+            "Employees and permissions",
+            "Team and operations tracking",
+            "Daily management tools"
+          ],
+          "blocker": "TODO(BLK-05b): The basis for “up to 600 cars” must be defined before launch."
+        },
+        "growth": {
+          "name": "Growth Plan",
+          "badge": "Best for Growth and Customer Experience",
+          "price": {
+            "monthly": "EGP 1,990 per month",
+            "yearly": "EGP 19,900 per year"
+          },
+          "description": "Best for organizing operations, improving customer experience, and encouraging repeat visits.",
+          "features": [
+            "Everything in Operations",
+            "A better booking experience",
+            "Customer and car history",
+            "Offers and discounts",
+            "Loyalty and rewards",
+            "Repeat-visit tracking"
+          ]
+        },
+        "expansion": {
+          "name": "Expansion Plan",
+          "label": "For multi-branch owners and larger operations",
+          "price": "The approved price will be added before launch.",
+          "priceStatus": "TODO(BLK-05)",
+          "features": [
+            "Multi-branch management",
+            "Central visibility",
+            "Permissions by branch and role",
+            "Branch comparison",
+            "Setup aligned with your management structure",
+            "Guided setup and implementation"
+          ]
+        }
+      },
+      "annualNote": "Annual billing: pay for 10 months and use the system for 12."
+    },
+    "trial": {
+      "eyebrow": "14-Day Trial",
+      "headline": "Not sure the system is the right fit?",
+      "body": [
+        "After we review how you operate, you can start a free 14-day trial on the Growth Plan.",
+        "We set a clear goal and use real operations and real data, so you can judge whether Sparkle Auto made a genuine difference."
+      ],
+      "planCard": {
+        "plan": "Growth Plan",
+        "trial": "Free 14-day trial"
+      },
+      "points": ["Review First", "Clear Goal", "Real Operations", "Real Data"]
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "headline": "Answers to the questions car-wash owners ask most.",
+      "sideCardTitle": "Still have a question?",
+      "items": [
+        {
+          "id": "faq-01",
+          "question": "Is Sparkle Auto only a booking system?",
+          "answer": "No. It is a complete operations system covering cars, team, services, inventory, finance, customers, and branches."
+        },
+        {
+          "id": "faq-02",
+          "question": "Do I need more than one branch?",
+          "answer": "No. It works for one branch, and its value grows with the size of your operation and the number of branches."
+        },
+        {
+          "id": "faq-03",
+          "question": "Will the team know how to use it?",
+          "answer": "Each employee sees and learns only the part relevant to their role."
+        },
+        {
+          "id": "faq-04",
+          "question": "Does it replace the branch manager?",
+          "answer": "No. It helps the manager organize operations and turn their experience into a clear way of working."
+        },
+        {
+          "id": "faq-05",
+          "question": "I already use WhatsApp and a notebook. Why change?",
+          "answer": "Because you need one source for status, responsibility, history, and revenue."
+        },
+        {
+          "id": "faq-06",
+          "question": "Is it accounting software?",
+          "answer": "It organizes the finances connected to car-wash operations, but it is not a complete replacement for an accountant or general accounting software."
+        },
+        {
+          "id": "faq-07",
+          "question": "How long does setup take?",
+          "answer": "It depends on your branches, services, data, and team. After the operations review, we define a realistic plan."
+        },
+        {
+          "id": "faq-08",
+          "question": "What happens during the 14-day trial?",
+          "answer": "A clear goal + data setup + real operations + result reviews."
+        },
+        {
+          "id": "faq-09",
+          "question": "What if I need a feature that isn’t available?",
+          "answer": "We review the problem first and determine whether the solution already exists, is on the roadmap, or requires custom work."
+        },
+        {
+          "id": "faq-10",
+          "question": "Can I monitor the car wash while I’m away?",
+          "answer": "Yes. You can monitor statuses, information, and reports according to your permissions—without constant phone calls."
+        },
+        {
+          "id": "faq-11",
+          "question": "How do I know whether it is right for my car wash?",
+          "answer": "Book an Operations Review. If it isn’t right for your current stage, we’ll tell you honestly."
+        }
+      ]
+    },
+    "applicationForm": {
+      "eyebrow": "Operations Review Request",
+      "headline": "Tell us how your car wash runs today.",
+      "description": "Answer a few questions, and we’ll focus the review on the problem that is actually slowing you down.",
+      "formTitle": "Let’s understand your operation.",
+      "explainers": [
+        {
+          "title": "Focused Review",
+          "description": "We focus on the problem that is actually slowing you down."
+        },
+        {
+          "title": "Your Data Stays Yours",
+          "description": "We use it only to understand your needs and contact you about the review."
+        },
+        {
+          "title": "A Solution That Fits",
+          "description": "If Sparkle Auto isn’t right for your current stage, we’ll tell you honestly."
+        }
+      ],
+      "fields": {
+        "full_name": {
+          "label": "Full Name",
+          "required": true
+        },
+        "phone": {
+          "label": "Mobile / WhatsApp",
+          "required": true
+        },
+        "wash_name": {
+          "label": "Car Wash Name",
+          "required": true
+        },
+        "governorate": {
+          "label": "Governorate / Area",
+          "required": true,
+          "options": [],
+          "optionsStatus": "pending-approved-options"
+        },
+        "branches_count": {
+          "label": "Number of Branches",
+          "required": true,
+          "options": [
+            {
+              "value": "1",
+              "label": "1 branch"
+            },
+            {
+              "value": "2-3",
+              "label": "2–3 branches"
+            },
+            {
+              "value": "4-6",
+              "label": "4–6 branches"
+            },
+            {
+              "value": "+7",
+              "label": "7 or more branches"
+            }
+          ]
+        },
+        "cars_per_day": {
+          "label": "Average Cars per Day",
+          "required": true,
+          "options": [
+            {
+              "value": "<20",
+              "label": "Fewer than 20"
+            },
+            {
+              "value": "20-50",
+              "label": "20–50"
+            },
+            {
+              "value": "51-100",
+              "label": "51–100"
+            },
+            {
+              "value": "+100",
+              "label": "More than 100"
+            }
+          ]
+        },
+        "role": {
+          "label": "Your Role",
+          "required": true,
+          "options": [
+            {
+              "value": "owner",
+              "label": "Owner"
+            },
+            {
+              "value": "manager",
+              "label": "Manager"
+            },
+            {
+              "value": "reception",
+              "label": "Reception"
+            },
+            {
+              "value": "other",
+              "label": "Other"
+            }
+          ]
+        },
+        "current_tools": {
+          "label": "What do you use to manage operations?",
+          "required": false
+        },
+        "main_problem": {
+          "label": "What is the biggest problem you need to solve?",
+          "required": true,
+          "options": [
+            {
+              "value": "branch-tracking",
+              "label": "Branch Tracking"
+            },
+            {
+              "value": "bookings",
+              "label": "Bookings"
+            },
+            {
+              "value": "car-status",
+              "label": "Car Status"
+            },
+            {
+              "value": "day-closing",
+              "label": "Day Closing"
+            },
+            {
+              "value": "team-permissions",
+              "label": "Team & Permissions"
+            },
+            {
+              "value": "inventory",
+              "label": "Inventory"
+            },
+            {
+              "value": "retention-loyalty",
+              "label": "Customer Return & Loyalty"
+            },
+            {
+              "value": "other",
+              "label": "Other Problem"
+            }
+          ]
+        },
+        "best_contact_time": {
+          "label": "Best Time to Contact You",
+          "required": false,
+          "options": [],
+          "optionsStatus": "pending-approved-options"
+        }
+      },
+      "privacy": "Your information is used only to understand your car wash’s needs and contact you about the review.",
+      "success": {
+        "title": "Thanks—we’ve received your request.",
+        "message": "We’ll review the information and contact you to arrange a suitable Operations Review."
+      },
+      "errors": {
+        "full_name": "Please enter your name.",
+        "phone": "Enter a valid Egyptian mobile number.",
+        "wash_name": "Enter your car wash name.",
+        "governorate": "Choose your governorate.",
+        "branches_count": "Choose the number of branches.",
+        "cars_per_day": "Choose the average number of cars.",
+        "role": "Choose your role at the car wash.",
+        "main_problem": "Choose at least one problem.",
+        "summary": "A few details are missing—review them and send again.",
+        "network": "You appear to be offline. Try again.",
+        "server": "Something went wrong on our side. Please try again shortly."
+      },
+      "actions": {
+        "submit": "Book an Operations Review",
+        "submitting": "Sending…",
+        "retry": "Try Again"
+      }
+    },
+    "finalCta": {
+      "headline": "Control is not about standing in the branch all day.",
+      "intro": "Control means knowing:",
+      "points": [
+        "What is happening",
+        "Who is responsible",
+        "What the numbers are saying"
+      ],
+      "body": [
+        "Without walking around and asking every time.",
+        "If your car wash has grown but its management still depends on you for every detail, let’s review the operation together."
+      ],
+      "closingBrand": "Sparkle Auto",
+      "closingTagline": "Your car wash in your pocket."
+    },
+    "footer": {
+      "description": "A booking and management system built for car-wash owners in Egypt.",
+      "copyrightTemplate": "© {year} Sparkle Auto. All rights reserved."
+    }
+  },
+  "global": {
+    "skipLink": "Skip to content",
+    "mainAriaLabel": "Main content",
+    "languageNames": {
+      "ar": "العربية",
+      "en": "English"
+    },
+    "mainNavigation": "Main navigation",
+    "footerNavigation": "Footer navigation",
+    "languageNavigation": "Language selection",
+    "changeLanguageTo": "Change language to {language}",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mobileMenu": "Navigation menu",
+    "currentPage": "Current page",
+    "skipStory": "Skip this story",
+    "storyNavigation": "Story steps",
+    "currentStory": "Current step: {title}",
+    "openFaq": "Open the answer to: {question}",
+    "closeFaq": "Close the answer to: {question}",
+    "formErrorSummary": "The form contains errors. Review the highlighted fields.",
+    "formSubmitting": "Sending your Operations Review request.",
+    "formSuccess": "Your Operations Review request was sent successfully.",
+    "requiredField": "Required field",
+    "optionalField": "Optional field",
+    "decorativeImageAlt": ""
+  },
+  "diagnostics": {
+    "whatsappUnavailable": "WhatsApp contact is unavailable until the approved number and message are added.",
+    "missingVideoTranscript": "TODO(BLK-07): The video transcript is unavailable.",
+    "assetPlaceholderTodo": "TODO({blocker})"
+  },
+  "meta": {
+    "title": "Sparkle Auto | Car Wash Management System in Egypt",
+    "description": "Manage your car wash’s bookings, operations, team, finances, inventory, and customers in one place. Monitor every branch and know what’s happening without scattered calls and reports.",
+    "openGraphTitle": "Sparkle Auto | Car Wash Management System in Egypt",
+    "openGraphDescription": "Manage your car wash’s bookings, operations, team, finances, inventory, and customers in one place. Monitor every branch and know what’s happening without scattered calls and reports."
+  }
+}

@@ -16,6 +16,10 @@ coverage/
 .next/
 out/
 target/
+playwright-report/
+test-results/
+*.tsbuildinfo
+.vercel/
 
 # Caches
 .cache/
@@ -43,3 +47,5 @@ Thumbs.db
 *.swp
 *.swo
 
+# Local duplicate cache; canonical visual references are already tracked elsewhere.
+docs/reference/source/

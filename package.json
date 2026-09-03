@@ -1,0 +1,61 @@
+{
+  "name": "sparkle-auto-landing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "prebuild": "node scripts/clean-next.mjs",
+    "build": "next build",
+    "start": "next start",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.mjs\" \"tests/**/*.{ts,mjs}\" \"*.{ts,mjs,json}\" \"content/*.json\"",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "test:overflow": "playwright test tests/overflow.spec.ts",
+    "test:a11y": "playwright test tests/a11y.spec.ts",
+    "test:visual": "playwright test tests/visual.spec.ts",
+    "test:unit": "node --experimental-strip-types --test tests/*.unit.test.mjs",
+    "test:e2e": "playwright test tests/overflow.spec.ts tests/a11y.spec.ts tests/visual.spec.ts",
+    "test:assets": "node scripts/check-placeholders.mjs",
+    "test:copy": "node scripts/check-hardcoded-copy.mjs && node scripts/check-content-contract.mjs",
+    "test:tokens": "node scripts/check-raw-values.mjs",
+    "test:source": "node scripts/check-source-hashes.mjs",
+    "test:release-readiness": "node scripts/check-release-readiness.mjs",
+    "audit:prod": "npm audit --omit=dev --audit-level=high",
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run test:unit && npm run build && npm run test:tokens && npm run test:copy && npm run test:source && npm run test:e2e",
+    "verify:release": "npm run verify && npm run test:assets && npm run test:release-readiness && npm run audit:prod"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.114.0",
+    "@vercel/analytics": "2.0.1",
+    "@vercel/speed-insights": "2.0.0",
+    "gsap": "3.15.0",
+    "next": "15.5.25",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@eslint/eslintrc": "3.3.7",
+    "@fontsource-variable/cairo": "5.3.0",
+    "@fontsource-variable/nunito": "5.3.0",
+    "@playwright/test": "1.62.1",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "22.20.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
+    "eslint": "9.39.5",
+    "eslint-config-next": "15.5.25",
+    "prettier": "3.9.6",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "postcss": "8.5.26"
+  },
+  "packageManager": "npm@11.13.0"
+}

@@ -1,10 +1,17 @@
 * text=auto eol=lf
 
-*.png binary
+docs/source/Sparkle-Auto-Master-Plan-v2.md -text
+docs/source/Sparkle-Auto-Final-Unified-17-Group-Codex-Master-v3.1.md -text
+
 *.jpg binary
 *.jpeg binary
+*.png binary
 *.gif binary
 *.webp binary
+*.avif binary
 *.ico binary
 *.pdf binary
-
+*.woff binary
+*.woff2 binary
+*.mp4 binary
+*.webm binary
