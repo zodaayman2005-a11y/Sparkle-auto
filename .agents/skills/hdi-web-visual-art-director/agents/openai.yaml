@@ -1,0 +1,4 @@
+interface:
+  display_name: "HDI Web Visual Art Director"
+  short_description: "Directs truthful branded web visuals end to end."
+  default_prompt: "Use $hdi-web-visual-art-director to direct the visual strategy, asset decisions, production, integration, and final QA for this website."

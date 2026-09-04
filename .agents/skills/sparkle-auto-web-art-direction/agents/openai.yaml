@@ -1,0 +1,5 @@
+interface:
+  display_name: "Sparkle Auto Web Art Direction"
+  short_description: "Applies Sparkle Auto web-art brand constraints."
+  brand_color: "#01A2FF"
+  default_prompt: "Use $sparkle-auto-web-art-direction with $hdi-web-visual-art-director for Sparkle Auto-specific web art direction."
