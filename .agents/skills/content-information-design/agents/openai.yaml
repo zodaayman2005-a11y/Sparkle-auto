@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Content & Information Design"
+  short_description: "Structure complex information for clear decisions"
+  brand_color: "#0C264B"
+  default_prompt: "Use $content-information-design to transform the supplied content into a traceable information architecture, message ladder, labels, diagrams, and stress-tested content model."

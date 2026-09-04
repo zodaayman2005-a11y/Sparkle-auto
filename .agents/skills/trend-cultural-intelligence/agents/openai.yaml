@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Trend & Cultural Intelligence"
+  short_description: "Evaluates trends and local credibility."
+  brand_color: "#0C264B"
+  default_prompt: "Use $trend-cultural-intelligence to evaluate current design signals and cultural context, date-stamp the evidence, score fit and risk, and decide what to adopt, adapt, test, or reject."

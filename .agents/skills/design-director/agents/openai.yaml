@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Design Director"
+  short_description: "Routes research, direction, and design gates."
+  brand_color: "#0C264B"
+  default_prompt: "Use $design-director to read project truth, classify the surface, run the research gate when current evidence matters, select the domain pack, and produce originality-audited art directions before coding."

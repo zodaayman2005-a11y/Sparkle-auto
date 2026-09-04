@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Responsive & RTL"
+  short_description: "Recomposes interfaces for devices, Arabic, and English."
+  brand_color: "#0C264B"
+  default_prompt: "Use $responsive-rtl to define content-driven breakpoints, mobile transformations, Arabic RTL, English LTR, and mixed-direction behavior."

@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Typography & Content"
+  short_description: "Designs expressive, readable bilingual type systems."
+  brand_color: "#0C264B"
+  default_prompt: "Use $typography-content to define Arabic and English type roles, hierarchy, wrapping, mixed-direction data, and content stress tests."

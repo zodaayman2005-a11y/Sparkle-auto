@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Design to Code"
+  short_description: "Implements approved designs as production frontend code."
+  brand_color: "#0C264B"
+  default_prompt: "Use $design-to-code to translate the approved contracts into semantic, accessible, responsive, RTL-safe production code using real product truth."

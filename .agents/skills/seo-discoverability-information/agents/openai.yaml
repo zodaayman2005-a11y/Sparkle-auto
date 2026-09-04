@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI SEO & Discoverability"
+  short_description: "Make public experiences findable and understandable"
+  brand_color: "#0C264B"
+  default_prompt: "Use $seo-discoverability-information to design a people-first discoverability and information architecture contract covering crawl/index, semantics, internal links, metadata, structured data, locale routes, rendering, and measurement."

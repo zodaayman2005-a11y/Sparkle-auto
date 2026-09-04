@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Visual Composition"
+  short_description: "Builds strong hierarchy, grids, rhythm, and layout."
+  brand_color: "#0C264B"
+  default_prompt: "Use $visual-composition to create the focal hierarchy, layout topology, grid, visual mass, whitespace rhythm, and responsive composition."

@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Localization & Culturalization"
+  short_description: "Adapt language, format, culture, and journeys by market"
+  brand_color: "#0C264B"
+  default_prompt: "Use $localization-culturalization to create a locale-aware product and content contract covering language, formats, direction, terminology, imagery, legal/commercial rules, and market-specific journeys."

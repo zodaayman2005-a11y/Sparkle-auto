@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Design Ops & Handoff"
+  short_description: "Convert approved design into an executable release contract"
+  brand_color: "#0C264B"
+  default_prompt: "Use $design-ops-handoff to prepare a complete production handoff with sources of truth, scope, contracts, dependencies, owners, acceptance evidence, change control, and release learning."

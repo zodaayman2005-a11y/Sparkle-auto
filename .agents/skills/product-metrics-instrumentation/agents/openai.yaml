@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Product Metrics & Instrumentation"
+  short_description: "Measure product behavior with trustworthy event contracts"
+  brand_color: "#0C264B"
+  default_prompt: "Use $product-metrics-instrumentation to create a privacy-aware measurement model with product questions, metric definitions, event semantics, identity/exposure rules, validation, governance, and analysis-ready evidence."

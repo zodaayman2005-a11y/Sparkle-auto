@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Visual QA & Refinement"
+  short_description: "Reviews rendered design evidence and enforces quality gates."
+  brand_color: "#0C264B"
+  default_prompt: "Use $visual-qa-refinement as an independent critic to inspect rendered viewports and states, run hard gates, score the work, and verify revisions."

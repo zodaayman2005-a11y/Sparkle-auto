@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Asset Production Direction"
+  short_description: "Direct consistent images, 3D, icons, and production assets"
+  brand_color: "#0C264B"
+  default_prompt: "Use $asset-production-direction to turn the approved brand world and layouts into production-ready asset briefs, identity locks, shot/export matrices, rights records, and QA gates."

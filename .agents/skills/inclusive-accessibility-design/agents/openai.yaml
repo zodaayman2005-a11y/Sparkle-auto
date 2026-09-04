@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Inclusive Accessibility Design"
+  short_description: "Design inclusive defaults beyond checklist compliance"
+  brand_color: "#0C264B"
+  default_prompt: "Use $inclusive-accessibility-design to audit and redesign the experience for inclusive use across sensory, motor, cognitive, language, literacy, age, and situational constraints with testable alternatives."

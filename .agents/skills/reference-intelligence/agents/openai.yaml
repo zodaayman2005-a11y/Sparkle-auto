@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Reference Intelligence"
+  short_description: "Decomposes selected references without copying."
+  brand_color: "#0C264B"
+  default_prompt: "Use $reference-intelligence to closely decompose the selected references, distinguish observation from inference, extract transferable principles, and record source-owned expression for the non-copy boundary."

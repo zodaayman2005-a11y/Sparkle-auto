@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Advanced Experience"
+  short_description: "Plans justified 3D, WebGL, and immersive scenes."
+  brand_color: "#0C264B"
+  default_prompt: "Use $advanced-experience to storyboard and govern justified 3D, WebGL, shaders, generative visuals, or pinned-scroll scenes with budgets and fallbacks."

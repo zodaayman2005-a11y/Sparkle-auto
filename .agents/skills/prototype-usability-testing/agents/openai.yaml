@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Prototype Usability Testing"
+  short_description: "Test whether real journeys are understandable"
+  brand_color: "#0C264B"
+  default_prompt: "Use $prototype-usability-testing to design and run an evidence-oriented usability evaluation of the supplied prototype, separate observations from opinions, and prioritize verified fixes."

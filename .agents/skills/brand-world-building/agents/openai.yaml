@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Brand World Building"
+  short_description: "Create a distinctive cross-channel visual world"
+  brand_color: "#0C264B"
+  default_prompt: "Use $brand-world-building to turn the approved brand strategy into a coherent, ownable visual world and production grammar rather than a moodboard of disconnected styles."

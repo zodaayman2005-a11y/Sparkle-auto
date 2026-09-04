@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Inspiration Synthesis"
+  short_description: "Turns evidence into original concepts."
+  brand_color: "#0C264B"
+  default_prompt: "Use $inspiration-synthesis to convert the researched and decomposed evidence into three original, traceable design territories while running de-fixation and non-copy audits."

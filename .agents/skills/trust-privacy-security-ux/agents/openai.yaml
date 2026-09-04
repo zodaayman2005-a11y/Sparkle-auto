@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Trust, Privacy & Security UX"
+  short_description: "Make sensitive actions clear, safe, and recoverable"
+  brand_color: "#0C264B"
+  default_prompt: "Use $trust-privacy-security-ux to design the sensitive workflow with least surprise, transparent data/permission meaning, safe defaults, clear consequences, recovery, and auditable states."

@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Data Visualization"
+  short_description: "Turn user questions and data into honest visuals"
+  brand_color: "#0C264B"
+  default_prompt: "Use $data-visualization to design an accurate, accessible data-view contract from the user questions, data grain, comparisons, uncertainty, and required actions."

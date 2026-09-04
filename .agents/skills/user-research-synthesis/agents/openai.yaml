@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI User Research Synthesis"
+  short_description: "Turn raw user evidence into design requirements"
+  brand_color: "#0C264B"
+  default_prompt: "Use $user-research-synthesis to synthesize the available user evidence into traceable insights, opportunity statements, and design requirements without inventing findings."

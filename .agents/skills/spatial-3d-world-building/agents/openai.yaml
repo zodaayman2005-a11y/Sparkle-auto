@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Spatial 3D World Building"
+  short_description: "Direct coherent, performant 3D web worlds"
+  brand_color: "#0C264B"
+  default_prompt: "Use $spatial-3d-world-building to turn the approved spatial concept into a scene, camera, environment, lighting, asset, interaction, performance, and fallback contract before production."

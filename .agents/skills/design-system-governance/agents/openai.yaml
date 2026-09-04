@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Design System Governance"
+  short_description: "Scale tokens and components without system drift"
+  brand_color: "#0C264B"
+  default_prompt: "Use $design-system-governance to audit and govern the design system with ownership, contribution, versioning, deprecation, migration, evidence, and regression controls."

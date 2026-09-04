@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Conversion & Behavior Design"
+  short_description: "Design ethical journeys that support real decisions"
+  brand_color: "#0C264B"
+  default_prompt: "Use $conversion-behavior-design to build an ethical, evidence-backed conversion journey with proof, objections, commitment levels, form strategy, and measurable hypotheses."

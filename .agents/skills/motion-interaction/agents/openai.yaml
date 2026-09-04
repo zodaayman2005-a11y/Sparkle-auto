@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Motion & Interaction"
+  short_description: "Designs purposeful motion and interaction behavior."
+  brand_color: "#0C264B"
+  default_prompt: "Use $motion-interaction to give each animation a purpose, define choreography and interruption behavior, and provide mobile and reduced-motion equivalents."

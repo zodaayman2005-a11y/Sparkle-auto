@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Competitive Experience"
+  short_description: "Benchmarks real category journeys."
+  brand_color: "#0C264B"
+  default_prompt: "Use $competitive-experience-intelligence to compare live direct, indirect, substitute, and aspirational experiences at journey and state level, then identify conventions, friction, sameness traps, and differentiation opportunities."

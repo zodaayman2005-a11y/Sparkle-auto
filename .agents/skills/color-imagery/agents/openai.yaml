@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Color & Imagery"
+  short_description: "Directs color roles, imagery, iconography, and 3D."
+  brand_color: "#0C264B"
+  default_prompt: "Use $color-imagery to define semantic color roles and a coherent photography, illustration, icon, product-proof, and 3D asset system."

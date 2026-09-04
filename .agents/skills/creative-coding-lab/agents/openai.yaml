@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Creative Coding Lab"
+  short_description: "Prototype experimental visuals safely before production"
+  brand_color: "#0C264B"
+  default_prompt: "Use $creative-coding-lab to build a constrained creative-coding experiment with a clear visual hypothesis, parameter model, feasibility evidence, performance budget, accessibility fallback, and production decision."

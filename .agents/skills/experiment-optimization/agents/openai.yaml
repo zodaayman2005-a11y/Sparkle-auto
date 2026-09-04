@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Experiment & Optimization"
+  short_description: "Test design hypotheses without gaming metrics"
+  brand_color: "#0C264B"
+  default_prompt: "Use $experiment-optimization to convert the design uncertainty into an ethical experiment with a causal hypothesis, exposure model, metrics, guardrails, analysis plan, and decision thresholds."

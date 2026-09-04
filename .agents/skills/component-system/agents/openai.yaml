@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Component System"
+  short_description: "Creates reusable tokens, components, variants, and states."
+  brand_color: "#0C264B"
+  default_prompt: "Use $component-system to audit and define tokens, behavior primitives, visual components, variants, states, composition APIs, and migration."

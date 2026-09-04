@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI UX Architecture"
+  short_description: "Structures journeys, navigation, tasks, and states."
+  brand_color: "#0C264B"
+  default_prompt: "Use $ux-architecture to define user jobs, journeys, information architecture, screen anatomy, permissions, and complete states before styling."

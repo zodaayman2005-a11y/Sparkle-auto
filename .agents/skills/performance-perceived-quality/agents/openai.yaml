@@ -1,0 +1,5 @@
+interface:
+  display_name: "HDI Performance & Perceived Quality"
+  short_description: "Design fast, stable, trustworthy loading experiences"
+  brand_color: "#0C264B"
+  default_prompt: "Use $performance-perceived-quality to create measurable performance budgets and a perceived-quality strategy covering loading, stability, responsiveness, progressive enhancement, and failure recovery."
